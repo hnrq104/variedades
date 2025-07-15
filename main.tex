@@ -26,8 +26,13 @@
 \newtheorem{claim}[theorem]{Claim}
 \newtheorem{fact}[theorem]{Fact}
 \newtheorem{problem}[theorem]{Problem}
-
 \newtheorem{remark}[theorem]{Remark}
+
+% my custom problems
+\newtheorem{innercustomprob}{Exercise}
+\newenvironment{customprob}[1]
+  {\renewcommand\theinnercustomprob{#1}\innercustomprob}
+  {\endinnercustomprob}
 
 \newenvironment{clmproof}[1]{\begin{proof}[Proof of Claim~\ref{#1}]\let\qednow\qedsymbol\renewcommand{\qedsymbol}{}}{\; \qednow \end{proof}}
 

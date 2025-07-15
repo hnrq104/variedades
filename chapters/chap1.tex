@@ -199,3 +199,112 @@ if $f'(z) = 0$, then $f(z + s) = f''(z)s^2 + \dots$, and it can be shown that fo
 	\end{align*}
 	As we wanted to show.
 \end{proof}
+
+\section{The Exterior Algebra of Multivectors}
+In some chapters, before the problem section there are some exercises within the text.
+\subsection{Within Text Exercises}
+
+\begin{customprob}{3.6}
+\end{customprob}
+
+
+\begin{proof}
+	We know looking at it that the inversions are $(5,1), (5,2), (5,3), (5,4)$. But we might have a clearer view writing it
+	in matricial form:
+	$$
+		\begin{bmatrix}
+			1 & 2 & 3 & 4 & 5 \\
+			5 & 1 & 2 & 3 & 4
+		\end{bmatrix}
+	$$
+\end{proof}
+
+\begin{customprob}{3.13}
+\end{customprob}
+\begin{proof}
+	Consider $\tau Sf$.
+	\begin{align*}
+		\tau Sf & = \sum_{\sigma \in S_k} \tau(\sigma f) \\
+		        & = \sum_{\sigma \in S_k} (\tau\sigma f) \\
+		        & = \sum_{\sigma \in S_k} \sigma f
+	\end{align*}
+	As we have set equality $\{\tau \sigma, \sigma \in S_k\} = \{\sigma \in S_k\}$
+\end{proof}
+
+
+\begin{customprob}{3.15}
+\end{customprob}
+\begin{proof}
+	We write the expression containing the 6 permutations and their signs:
+	\begin{align*}
+		A f(v_1,v_2,v_3) & = f(v_1,v_2,v_3) + (-1)f(v_1,v_3,v_2) + f(v_2, v_1, v_3)         \\
+		                 & + (-1)f(v_2, v_3, v_1) + (-1)f(v_3, v_1, v_2) + f(v_3, v_2, v_1)
+	\end{align*}
+\end{proof}
+
+
+\begin{customprob}{3.17}
+\end{customprob}
+\begin{proof}
+	let $f$ be $k$-linear, $g$ $l$-linear and $h$ $m$-linear. Then:
+	$$(f \otimes g) \otimes h = (f(v_1, \dots v_k)\cdot g(v_{k+1}, \dots v_{k+l})) \otimes h =
+		f(v_1, \dots v_k)\cdot g(v_{k+1}, \dots v_{k+l}) \cdot h(v_{k+l+1}, \dots v_{k+l+m})$$
+	Similarly, as $g$ is $l$-linear and $h$ $m$-linear, $(g \otimes h)$ is $l+m$ linear, as such:
+	$$f \otimes (g \otimes h) = f(v_1, \dots v_k) \otimes (g\otimes h) =
+		f(v_1, \dots v_k) \otimes (g(w_{1}, \dots w_{k+l}) \cdot h(w_{l+1}, \dots w_{l+m})$$
+	Resulting in what was expected:
+	$$f \otimes (g \otimes h) = f(v_1, \dots v_k)\cdot g(v_{k+1}, \dots v_{k+l}) \cdot h(v_{k+l+1}, \dots v_{k+l+m}) $$
+\end{proof}
+
+\begin{customprob}{3.20}
+\end{customprob}
+\begin{proof}
+	$$f \wedge g (v_1,v_2,v_3,v_4) = \sum_{(2,2)-\text{shuffles}\;\sigma} f(v_{\sigma(1)}, v_{\sigma(2)})g(v_{\sigma(3)}, v_{\sigma(4)})$$
+	As $\binom{4}{2} = 6$ we have the following big sum:
+	\begin{align*}
+		(f \wedge g) (v_1,v_2,v_3,v_4) & = f(v_{1}, v_{2})g(v_{3}, v_{4}) + (-1)f(v_{1}, v_{3})g(v_{2}, v_{4}) \\
+		                               & + f(v_1,v_4)g(v_2,v_3) + f(v_2,v_3)g(v_1,v_4)                         \\
+		                               & + (-1)f(v_2, v_4)g(v_1,v_3) + f(v_3,v_4)g(v_1,v_2)
+	\end{align*}
+\end{proof}
+
+
+\begin{customprob}{3.22}
+\end{customprob}
+\begin{proof}
+	It suffices to count the number of inversions, but this is simple, each of the first $l$ elements of the permutation
+	have $k$ inversions with the last $k$ elements, yielding $lk$ inversions. As such, $\text{sgn}(\tau) = (-1)^{kl}$.
+\end{proof}
+
+\subsection{Problems}
+\begin{problem}
+\end{problem}
+
+\begin{proof}
+	We begin by remembering $\alpha_i: v \to v_i$, so we may write the tensor product
+	$$\alpha_i \otimes \alpha_j: (v,w) \to \alpha_i(v)\cdot \alpha_j(w)$$
+	So the transformation becomes:
+	$$f = \sum_{1 \leq i,j \leq n} g_{ij} \cdot \alpha_i \otimes \alpha_j$$
+\end{proof}
+
+\begin{problem}
+\end{problem}
+\begin{enumerate}[label=(\alph*)]
+	\item \begin{proof}
+		      This is a simple consequence of the kernel image theorem. We know, from that result, the following identity:
+		      $$\dim(V) = \dim(\ker(f)) + \dim(f(V))$$
+		      As $f$ is a linear, non-zero, and sends on $\R$, we know $f(V) = \R$, and $\dim(f(V)) = 1$. Substituting back,
+		      $\dim(\ker(f)) = n - 1$.
+	      \end{proof}
+	\item \begin{proof}
+		      If $V$ has finite dimension, this is a consequence of the previous item. Being the kernel the same of dimension n-1 ,
+		      by taking any vector $v$  such that $f(v) \neq 0$, we may chose $c = g(v)/f(v)$. Now notice $\ker(cf - g)$ has dimension
+		      at least $n$, and as such is the whole space. Let's generalize using the first isomorphism theorem. Notice that
+		      $$\frac{V}{\ker(f)} = \frac{V}{\ker(g)} \cong \R$$
+		      This means that $\frac{V}{\ker(f)}$ and $\frac{V}{\ker(g)}$ are one-dimensional, with the same elements. Take
+		      $v$ such that $\bar{v} \neq 0$, choose $c = g(v)/f(v)$, and as before notice that $\ker(cf - g) = V$.
+	      \end{proof}
+\end{enumerate}
+
+\begin{problem}
+\end{problem}
