@@ -102,7 +102,100 @@
 \end{problem}
 
 \begin{proof}
-	Expand do taylor at each derivative!
+	We apply Taylor twice. As before, consider the function on the line $f(tx,ty))$. By the chain rule
+	$$D_t f(tx,ty) = \partial_x f(tx,ty)x + \partial_y f(tx,ty)y$$
+	So, integrating, we find
+	$$f(x,y) - f(0,0) = D_t f(tx,ty) \bigg ]_{0}^{1} = x \int_{0}^{1} \partial_x f(tx,ty) dt + y \int_{0}^{1} \partial_y f(tx,ty) dt$$
+	$$f(x,y)  = f(0,0) +  x \int_{0}^{1} \partial_x f(tx,ty) dt + y \int_{0}^{1} \partial_y f(tx,ty) dt$$
+	Now we do the same for $\partial_x f(tx,ty)$ and $\partial_y f(tx,ty)$, we find:
+	$$\partial_x f(x,y)  = \partial_x f(0,0) +  x \int_{0}^{1} \partial_{xx} f(tx,ty) dt + y \int_{0}^{1} \partial_{xy} f(tx,ty) dt$$
+	$$\partial_y f(x,y)  = \partial_{y} f(0,0) +  x \int_{0}^{1} \partial_{yx} f(tx,ty) dt + y \int_{0}^{1} \partial_{yy} f(tx,ty) dt$$
+	Substituting in the $f(x,y)$ expansion:
+	\begin{align*}
+		f(x,y)  = f(0,0) + & x \int_{0}^{1}\Bigg( \partial_x f(0,0) +  x \int_{0}^{1} \partial_{xx} f(stx,sty) ds + y \int_{0}^{1} \partial_{xy} f(stx,sty) ds \Bigg) dt \\
+		+                  & y \int_{0}^{1}\Bigg( \partial_y f(0,0) +  x \int_{0}^{1} \partial_{yx} f(stx,sty) ds + y \int_{0}^{1} \partial_{yy} f(stx,sty) ds \Bigg) dt \\
+		= f(0,0) +         & x \partial_x f(0,0) + y \partial_y f(0,0) + x^2 g_{11}(x,y) + xy g_{12}(x,y) + y^2 g_{22}(x,y)                                              \\
+	\end{align*}
 \end{proof}
 
-\section{Tangent Vectors in $\mathbb{R}^n$ as Derivations}
+\begin{problem}
+\end{problem}
+
+\begin{proof}
+	$g(t,u)$ is 0 at $t = 0$. And, by expanding $f$, we find, for $t \neq 0$:
+	\begin{equation*}
+		g(t,u) = \frac{1}{t} \bigg( f(0,0)  + \partial_x f(0,0) t + \partial_y f(0,0) tu  +
+		t^2 g_{11}(t,tu) + t^2u g_{12}(t,tu) + t^2u^2 g_{22}(t,tu) \bigg)
+	\end{equation*}
+	Noticing $f(0,0) = \partial_x f(0,0) = \partial_y f(0,0) = 0$ we get:
+	$$g(t,u) = t g_{11}(t,tu) + tu g_{12}(tu) + tu^2 g_{22}(t,tu)$$
+	Because $g(0,u) = 0$, this formula is valid for $t = 0$ as well, and this expression is $C^\infty$.
+\end{proof}
+
+\begin{problem}
+$f^{-1} = x^{1/3}$ which is not differentiable at $0$. In complex analysis, as a consequence of Rouche's theorem,
+if $f'(z) = 0$, then $f(z + s) = f''(z)s^2 + \dots$, and it can be shown that for sufficiently small $s$, we have at least two solutions.
+
+\end{problem}
+
+\section{Tangent Vectors in Rn as Derivations}
+
+\begin{problem}
+\end{problem}
+\begin{proof}
+	$$ X = x\partial_x + y\partial_y$$
+	$$ f(x,y,z) =  x^2 + y^2 + z^2$$
+	Then, computing $Xf$ is as simple as applying $X$ to $f$ at every point:
+	$$Xf = x\partial_x f + y\partial_y f = 2x^2 + 2y^2$$
+\end{proof}
+
+\begin{problem}
+\end{problem}
+
+\begin{proof}
+	We define all such operations point-wise on $C_{p}^{\infty}$. For $f,g \in C_{p}^{\infty}$ and $\lambda \in \R$,
+	for any $x \in U$ :
+	\begin{align*}
+		(f + g) (x)     & = f(x) + g(x) = g(x) + f(x) =  (g + f)(x)             \\
+		(f \cdot g) (x) & = f(x) \cdot g(x) = g(x) \cdot f(x) =  (g \cdot f)(x) \\
+		(\lambda f) (x) & = \lambda \cdot f(x)
+	\end{align*}
+	Such operations are closed in $C_{p}^{\infty}$ as differentiability is a local property closed under these
+	operations.
+\end{proof}
+
+\begin{problem}
+\end{problem}
+
+
+\begin{enumerate}[label=(\alph*)]
+	\item \begin{proof}
+		      Let $D, D'$ be derivation at $p$. Then both $D,D'$ are linear maps of the form $C_p^{\infty} \to \R$, that
+		      satisfy the Leibniz rule.
+		      $$(D + D')(\lambda f + g) = D(\lambda f + g) + D'(\lambda f + g) = \lambda (D + D')f + (D + D')g$$
+		      So $D + D'$ is linear. We also have:
+		      $$(D + D')(fg) = D(fg) + D'(fg) = (Df)g + f(Dg) + (D'f)g + f(D'g) = (D + D')(f)g + f(D + D')(g)$$
+		      As we wanted to show.
+	      \end{proof}
+	\item \begin{proof}
+		      Certainly is a linear map and the $c$ pops inside the Leibniz rule
+		      $$cD(fg) = c((Df)g + f(Dg)) = (cDf)g + f(cDg)$$
+	      \end{proof}
+\end{enumerate}
+
+\begin{problem}
+\end{problem}
+\begin{proof}
+	Let $D_1,D_2: A \to A$, then $D_1 \circ D_2 : A \to A$. And:
+	$$D_1 \circ D_2 (ab) = D_1(a(D_2b)) + D_1((D_2a)b) = (D_1a)(D_2b) + a(D_1D_2b) + (D_1D_2a)b + (D_2a)(D_1b)$$
+	which certainly isn't necessairly equal to:
+	$$a(D_1(D_2b)) + (D_1(D_2a))b$$
+
+	Now let's consider $D_1 \circ D_2 - D_2 \circ D_1$, which is clearly a linear map.
+	\begin{align*}
+		(D_1 \circ D_2 - D_2 \circ D_1)(ab) & = (D_1a)(D_2b) + a(D_1D_2b) + (D_1D_2a)b + (D_2a)(D_1b) \\
+		                                    & - (D_2a)(D_1b) - a(D_2D_1b) - (D_2D_1a)b - (D_1a)(D_2b) \\
+		                                    & = a[D_1D_2 - D_2D_1](b) + [D_1D_2 - D_2D_1](a)b
+	\end{align*}
+	As we wanted to show.
+\end{proof}
