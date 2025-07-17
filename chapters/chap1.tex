@@ -308,3 +308,132 @@ In some chapters, before the problem section there are some exercises within the
 
 \begin{problem}
 \end{problem}
+\begin{proof}
+	First of linear independence, consider $I$ the set of multi-indices and set $e_I$ as before. Suppose
+	$$\sum_{(i_1,\dots,i_k) = I} c_I \alpha_{i_1}\otimes\alpha_{i_2} \cdots \otimes\alpha_{i_n} = 0$$
+	Now to uncover each $c_I$, apply the tranformation to $e_I$. If $J \neq I$, then there is a first index
+	$j_k \neq i_k$. As such, when applying to $e_I$:
+	$$\alpha_{j_1}\otimes \cdots \alpha_{j_k} \cdots \otimes\alpha_{j_n} (e_I) = \alpha_{j_1}(e_{i_1})\cdots \alpha_{j_k}(e_{i_k}) \cdots
+		\alpha_{j_n}(e_{i_n}) = 0$$
+	As  $\alpha_{j_k}(e_{i_k}) = 0$. And we find:
+	$$\Bigg[\sum_{(i_1,\dots,i_k) = I} c_I \cdot \alpha_{i_1}\otimes\alpha_{i_2} \cdots \otimes\alpha_{i_n}\Bigg](e_I) = c_I = 0$$
+
+	Now for span. Notice only by linearity that if two k-linear transformation coincide on the indices, then they coincide for every value.
+	As such, given $f \in L_k(V)$, we define $g$ by:
+	$$g = \sum_I f(e_I)\cdot\alpha_I$$
+	where here $\alpha_I = \alpha_{i_1}\otimes\alpha_{i_2} \cdots \otimes\alpha_{i_n}$.
+\end{proof}
+
+\begin{problem}
+\end{problem}
+\begin{proof}
+	We say $f$ is alternating if, for a permutation $\sigma$:
+	$$\sigma f = \text{sgn}(\sigma) f$$
+
+	To show equivalence is to show that  a function has the flipping property, iff it satisfies this permutation property.
+	Clearly, permutation implies flipping, as doing any single 2-transposition changes the sign of the permutation. Now, for
+	the other side, we record that the sign of a permutation is $(-1)^m$, where $m$ is the number of inversions revelead when
+	describing the permutation as 2-transpositions. Following this definition, we see that flipping is sufficient.
+\end{proof}
+
+\begin{problem}
+\end{problem}
+\begin{proof}
+	We may notice, using the wedge products as a basis for the co-vectors that if $f$ is alternating, then $f(v_1, \dots, v_k) = 0$ if
+	there are $i \neq j$ with $v_i = v_j$ by looking at the decomposition. But that is actually harder.
+
+	Suppose $f$ is n-alternating and let $v_1, \dots v_n$ be $n$ vectors with $v_i = v_j$ for $i < j$. Then
+	after a permutation $\sigma$ that makes $i$ next to $j$, we have:
+	$$(\sigma f)(v_1,\dots,v_i,\dots,v_j,\dots,v_n) = \text{sgn}(\sigma) f(v_1, \dots, v_i,v_j, \dots, v_n)$$
+	Being $v_i = v_j$
+	$$\text{sgn}(\sigma) f(v_1, \dots, v_i,v_j, \dots, v_n) = \text{sgn}(\sigma) f(v_1, \dots, v_j,v_i, \dots, v_n)$$
+	But, because $f$ is alternating, we also have:
+	$$\text{sgn}(\sigma) f(v_1, \dots, v_i,v_j, \dots, v_n) = - \text{sgn}(\sigma) f(v_1, \dots, v_j,v_i, \dots, v_n)$$
+	So both are equal to $0$, and as such
+	$f(v_1, \dots, v_n) = 0$.
+
+	Now suppose that whenever two vectors are equal, $f = 0$. Then, given any 2 positions $i < j$ we may write (to simplify, we suppose that
+	they are the only ones):
+	\begin{equation*}
+		0 = f(v_i + v_j, v_i + v_j)  = f(v_i, v_i) + f(v_i, v_j) + f(v_j, v_i) + f(v_j, v_j) = f(v_i,v_j) + f(v_j,v_i)
+	\end{equation*}
+	So flipping a coordinate changes the sign.
+\end{proof}
+
+\begin{problem}
+\end{problem}
+\begin{proof}
+	$$af \wedge bg = \frac{1}{k!l!}A(af \otimes bg) = \frac{1}{k!l!} \sum_{\sigma \in S_{k+l}} (\text{sgn}(\sigma))(\sigma (af\otimes bg))$$
+	But we can pop out the constants from the tensor product. Yielding:
+	$$\frac{ab}{k!l!} \sum_{\sigma \in S_{k+l}} (\text{sgn}(\sigma))(\sigma (f\otimes g)) = ab(f\wedge g)$$
+\end{proof}
+
+\begin{problem}
+\end{problem}
+\begin{proof}
+	I was thinking of using the relation for covectors $\alpha$:
+	$$(\alpha^1 \wedge \alpha^2 \cdots \wedge \alpha^k)(v_1, v_2, \dots, v_k) = \det[\alpha^i(v_j)]$$
+	But I don't know how to use it here. I guess we can expand stuff:
+	$$\beta^1 \wedge \beta^2 \cdots \wedge \beta^k = \bigwedge_{i = 1}^{k} \sum_{j = 1}^{k} a^i_j \gamma^j$$
+	Now, by linearity of the wedge product, we may separate each sum and write the following:
+	$$\bigwedge_{i = 1}^{k} \sum_{j = 1}^{k} a^i_j \gamma^j =
+		\sum_{\substack{[i_1, i_2, \dots, i_k]\\ \in [k]^k}} (a^1_{i_1} \gamma_{i_1} \wedge a^2_{i_2}\gamma_{i_2} \cdots \wedge a^k_{i_k}\gamma_{i_k})$$
+	Now, we know that, because the wedge product is alternating, we only care about permutations of $[k]$, because if we choose two $\gamma_i$'s it will zero.
+	As such, we are left with the following, (where the sign comes from the alternating property):
+	$$\sum_{\substack{[i_1, i_2, \dots, i_k]\\ \in [k]^k}} (a^1_{i_1} \gamma_{i_1} \wedge a^2_{i_2}\gamma_{i_2} \cdots \wedge a^k_{i_k}\gamma_{i_k}) =
+		\sum_{\sigma \in S_k} \text{sgn}(\sigma) \cdot (a^1_{\sigma(1)} \gamma_{1} \wedge a^2_{\sigma(2)}\gamma_{2} \cdots \wedge a^k_{\sigma(k)}\gamma_{k}) $$
+	which, by the previous problem is equal to:
+	$$\sum_{\sigma \in S_k} \text{sgn}(\sigma) \cdot a^1_{\sigma(1)}a^2_{\sigma(2)}\cdots a^k_{\sigma(k)} \cdot (\gamma_{1} \wedge \gamma_{2} \cdots \wedge \gamma_{k}) =
+		(\det A)\, \gamma_{1} \wedge \gamma_{2} \cdots \wedge \gamma_{k}$$
+\end{proof}
+
+\begin{problem}
+\end{problem}
+\begin{proof}
+	This is a collorary from the fact that given a basis $B$ of $V$ and their $\alpha^i$ duals, $\alpha^1 \wedge \alpha^2 \wedge \cdots \wedge \alpha^n$ is a basis for $A_n$. If $\omega$ is a $n$-covector,
+	then it is of the form $c(\alpha^1 \wedge \alpha^2 \wedge \cdots \wedge \alpha^n)$, so if it is zero for $B$, then $c = 0$.
+
+	Another way of seeing this is writing $\omega(v_1, v_2, \dots, v_n) = \sum_{\sigma \in S_k} C_\sigma \omega(e_1, e_2, \dots, e_n) = 0$.
+\end{proof}
+
+\begin{problem}
+\end{problem}
+\begin{proof}
+	This seems to have an easy and a hard direction.
+	If the covectors are NOT linearly independent, then we may write, say $\alpha^k = \sum_{i=1}^{k-1} c_i \alpha^i$. As such
+	$$\alpha_1 \wedge \alpha_2 \cdots \wedge \alpha_k = \sum_{i = 1}^{k-1} c_i \alpha_1 \wedge \alpha_2 \cdots \wedge \alpha_{k-1} \wedge \alpha_i = 0$$
+
+	Now, if they are linearly independent, let's use induction on the determinant formula.
+	$$\alpha^1 \wedge \alpha^2 \cdot \wedge \alpha^k(v_1, v_2 \dots, v_k) = \det[\alpha^i (v_j)]$$
+	Base case k = 1: $\alpha^1 \neq 0$
+	Now, suppose it's valid for $k-1$ and
+	Sps for sake of contradiction that $\alpha^1 \wedge \alpha^2 \cdot \wedge \alpha^k = 0$, we may then consider, for a given fixed choice of $w_2,w_3,\dots,w_k$ the linear transformation on $v$
+	$$x(v) = \alpha^1 \wedge \alpha^2 \cdots \wedge \alpha^k(v, w_2 \dots, w_k) = \sum_{\sigma \in S_k} \text{sgn}(\sigma)(\sigma \bigotimes_{i = 1}^{k} \alpha^i)(v,w_2, \dots, w_k) = 0$$
+	Writing this sum separetely, depending where $v$ is:
+	\begin{align*}
+		x(v) & = \sum_{\sigma \in S_{k}, \sigma(1) = 1} \alpha^1(v) \cdot \text{sgn}(\sigma)\cdot \alpha^2(w_{\sigma(2)}) \cdots  \alpha^k(w_{\sigma(k)})       \\
+		     & + \sum_{\sigma \in S_{k}, \sigma(2) = 1} \alpha^2(v) \cdot \text{sgn}(\sigma)\cdot \alpha^1(w_{\sigma(1)}) \cdots  \alpha^k(w_{\sigma(k)})       \\
+		     & \dots                                                                                                                                            \\
+		     & + \sum_{\sigma \in S_{k}, \sigma(k) = 1} \alpha^k(v) \cdot \text{sgn}(\sigma)\cdot \alpha^1(w_{\sigma(1)}) \cdots  \alpha^{k-1}(w_{\sigma(k-1)})
+	\end{align*}
+	If we show the term following $\alpha_1(v)$ is not $0$, then we will have shown linear dependence. We can use induction for this!
+	The terms that follows $\alpha_1(v)$ is actually $(\alpha^2(w_2)\wedge \alpha^3(w_3) \cdots \wedge \alpha^k(w_k))$, by the induction hypothesis,
+	there is a choice of $w_2, w_3, \dots, w_n$ with the expression non-zero. And we win!
+	Reordering, we get that $\alpha^1$ is a linear combination of $\alpha^j$ for $j > 1$.
+\end{proof}
+
+\begin{problem}
+\end{problem}
+
+\begin{proof}
+	The converse is obvious. Sps $\alpha \wedge \gamma = 0$. Being $\alpha \neq 0$ and $V$ finite dimensional (let's say $n$), we may use it to complete a basis:
+	$$(\alpha = \alpha^1), \alpha^2, \dots \alpha^n$$. Then, we may, using the usual basis for the k-covectors $A_k(V)$, span $\gamma$ by:
+	$$\gamma = \sum \gamma(e_I)\alpha_I$$
+	Meaning:
+	$$\alpha \wedge \gamma = \sum \gamma(e_I) \alpha^1 \wedge \alpha_I = 0$$
+	But the non-zero terms $\alpha^1 \wedge \alpha_I$ form a basis for $A_{k+1}(V)$, that for each of the $\alpha_I$ that do not contain
+	$\alpha^1$, $\gamma(e_I) = 0$. As such $\gamma$ contains only basis vectors that contain $\alpha^1$ on the index. That is:
+	$$\gamma = \alpha \wedge \Bigg( \sum_{I} \gamma(e_I) \alpha_{I / \{ 1\}} \Bigg)$$
+\end{proof}
+
+\section{Differential forms on Rn}
