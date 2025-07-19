@@ -427,11 +427,11 @@ In some chapters, before the problem section there are some exercises within the
 
 \begin{proof}
 	The converse is obvious. Sps $\alpha \wedge \gamma = 0$. Being $\alpha \neq 0$ and $V$ finite dimensional (let's say $n$), we may use it to complete a basis:
-	$$(\alpha = \alpha^1), \alpha^2, \dots \alpha^n$$. Then, we may, using the usual basis for the k-covectors $A_k(V)$, span $\gamma$ by:
+	$(\alpha = \alpha^1), \alpha^2, \dots \alpha^n$. Then, we may, using the usual basis for the k-covectors $A_k(V)$, span $\gamma$ by:
 	$$\gamma = \sum \gamma(e_I)\alpha_I$$
 	Meaning:
 	$$\alpha \wedge \gamma = \sum \gamma(e_I) \alpha^1 \wedge \alpha_I = 0$$
-	But the non-zero terms $\alpha^1 \wedge \alpha_I$ form a basis for $A_{k+1}(V)$, that for each of the $\alpha_I$ that do not contain
+	But the non-zero terms $\alpha^1 \wedge \alpha_I$ are L.I in $A_{k+1}(V)$, so that for each of the $\alpha_I$ that do not contain
 	$\alpha^1$, $\gamma(e_I) = 0$. As such $\gamma$ contains only basis vectors that contain $\alpha^1$ on the index. That is:
 	$$\gamma = \alpha \wedge \Bigg( \sum_{I} \gamma(e_I) \alpha_{I / \{ 1\}} \Bigg)$$
 \end{proof}
@@ -487,10 +487,117 @@ In some chapters, before the problem section there are some exercises within the
 \end{problem}
 
 \begin{proof}
+	$$\omega(X) = [zdx - dz](y\frac{\partial}{\partial x} + x\frac{\partial}{\partial y}) =
+		zy \bigg(dx \frac{\partial}{\partial x}\bigg) + zx \bigg(dx \frac{\partial}{\partial y}\bigg)
+		- y \bigg(dz \frac{\partial}{\partial x} \bigg) - x \bigg(dz \frac{\partial}{\partial y} \bigg)$$
+	Applying the covectors and cancelling out the zero terms we get:
+	$$\omega(X)_{(x,y,z)} = zy$$
 \end{proof}
 
 \begin{problem}
 \end{problem}
 
 \begin{proof}
+	For this problem it is helpful to remember Prop 3.27. Which states: if $\alpha^1, \alpha^2, \dots \alpha^k$ are covectors, then
+	$$[\alpha^1 \wedge \alpha^2 \wedge \cdots \wedge \alpha^k](v_1, v_2, \dots, v_k) = \det [\alpha^i(v_j)]$$
+	$\omega$ then becomes:
+	$$\omega_p = p^3(dx^1 \wedge dx^2)$$
+	To check this is true, we can write out:
+	$$[dx^1 \wedge dx^2](a, b) = dx^1(a)dx^2(b) - dx^1(b)dx^2(a) = a^1b^2 - a^2b^1 $$
+	As we wanted to show.
+\end{proof}
+
+\begin{problem}
+\end{problem}
+\begin{proof}
+	We consider $x(r,\theta), y(r, \theta) \in \Omega_0(\R^2)$ as 0-degree covectors. We may then apply $d$ to them
+	yielding:
+	$$dx_p = d(r\cos(\theta)) = \bigg(\frac{\partial}{\partial r}x dr\bigg) + \bigg(\frac{\partial}{\partial \theta}x d\theta\bigg)
+		= \cos(\theta)dr - r\sin(\theta)d\theta$$
+	similarly we find:
+	$$dy_p =  \sin(\theta)dr + r\cos(\theta)d\theta$$
+	We may then calculate $(dx \wedge dy)_p$ as (ignoring the subscript)
+	$$dx \wedge dy = \cos(\theta) \sin(\theta) dr \wedge dr + r(\cos(\theta))^2 dr \wedge d\theta
+		- r(\sin(\theta))^2 d\theta \wedge dr - r^2\sin(\theta)\cos(\theta)d\theta \wedge d\theta$$
+	Cancelling what we can and flipping the wedge product we find:
+	$$dx \wedge dy = r dr \wedge d\theta$$
+\end{proof}
+
+\begin{problem}
+\end{problem}
+\begin{proof}
+Doing exactly the same thing as the previous problem, we consider $x,y,z$ as 0-covectors and apply the differential.
+\begin{align*}
+	dx & = \sin(\phi)\cos(\theta)d\rho + \rho\cos(\phi)\cos(\theta)d\phi - \rho\sin(\phi)\sin(\theta) d\theta \\
+	dy & = \sin(\phi)\sin(\theta)d\rho + \rho\cos(\phi)\sin(\theta)d\phi + \rho\sin(\phi)\cos(\theta) d\theta \\
+	dz & = \cos(\theta)d\rho - \rho\sin(\theta)d\theta                                                        \\
+\end{align*}
+Now $dx \wedge dy \wedge dz$ is considerably more difficult to calculate, expanding each term linearly and taking only
+the non repeating values we may reduce it to:
+\begin{align*}
+	dx \wedge dy \wedge dz & = \sin(\phi)\cos(\theta)d\rho \wedge \rho\cos(\phi)\sin(\theta)d\phi \wedge (- \rho\sin(\theta)d\theta)   \\
+	                       & + \rho\cos(\phi)\cos(\theta)d\phi \wedge \sin(\phi)\sin(\theta)d\rho \wedge (- \rho\sin(\theta)d\theta)   \\
+	                       & + \rho\cos(\phi)\cos(\theta)d\phi \wedge \rho\sin(\phi)\cos(\theta) d\theta \wedge \cos(\theta)d\rho      \\
+	                       & + (- \rho\sin(\phi)\sin(\theta) d\theta) \wedge \rho\cos(\phi)\sin(\theta)d\phi \wedge  \cos(\theta)d\rho \\
+\end{align*}
+Now, we may rearrange all products, and pull the functions on front yielding:
+\begin{align*}
+	dx \wedge dy \wedge dz & = -\rho^2\cos(\phi)\sin(\phi)\cos(\theta)(\sin(\theta))^2  (d\rho \wedge d\phi \wedge d\theta) \\
+	                       & + \rho^2\cos(\phi)\sin(\phi)\cos(\theta)(\sin(\theta))^2  (d\rho \wedge d\phi \wedge d\theta)  \\
+	                       & + \rho^2\cos(\phi)\sin(\phi)(\cos(\theta))^3 (d\rho \wedge d\phi \wedge d\theta)               \\
+	                       & +\rho^2\cos(\phi)\sin(\phi)\cos(\theta)(\sin(\theta))^2 (d\rho \wedge d\phi \wedge d\theta)    \\
+\end{align*}
+Canceling the first two and using $\cos^3 + \cos \sin^2 = \cos$ on the latter, we find:
+$$ dx \wedge dy \wedge dz = \rho^2\cos(\phi)\sin(\phi)\cos(\theta) (d\rho \wedge d\phi \wedge d\theta)$$
+\end
+{proof}
+
+\begin{problem}
+\end{problem}
+
+\begin{proof}
+	We ignore products with repeating co-vectors and alternate positions changing signs.
+	\begin{align*}
+		\alpha \wedge \beta = a_1 b_1 + a_2 b_2 + a_3 b_3 (dx^1 \wedge dx^2 \wedge dx^3 )
+	\end{align*}
+\end{proof}
+
+\begin{problem}
+\end{problem}
+
+\begin{proof}
+	Let's uncover $\alpha \wedge \beta$ and then transform it to a vector following the correspondence.
+	\begin{align*}
+		\alpha \wedge \beta & = a_1b_2 \alpha^1 \wedge \alpha^2 + a_1b_3 \alpha^1 \wedge \alpha^3                                                                    \\
+		                    & + a_2b_1 \alpha^2 \wedge \alpha^1 + a_2b_3 \alpha^2 \wedge \alpha^3                                                                    \\
+		                    & + a_3b_1 \alpha^3 \wedge \alpha^1 + a_3b_2 \alpha^3 \wedge \alpha^2                                                                    \\
+		                    & = (a_2b_3 - a_3b_2) \alpha^2 \wedge \alpha^3  + (a_1b_3 - a_3b_1) \alpha^1 \wedge \alpha^3 + (a_1b_2 - a_2b_1)\alpha^1 \wedge \alpha^2 \\
+		                    & = (a_2b_3 - a_3b_2) \alpha^2 \wedge \alpha^3  - (a_1b_3 - a_3b_1) \alpha^3 \wedge \alpha^1 + (a_1b_2 - a_2b_1)\alpha^1 \wedge \alpha^2 \\
+	\end{align*}
+	So that:
+	$$v_{\alpha \wedge \beta} = \langle (a_2b_3 - a_3b_2), - (a_1b_3 - a_3b_1), (a_1b_2 - a_2b_1)\rangle = v_\alpha \times v_\beta$$
+\end{proof}
+
+\begin{problem}
+\end{problem}
+
+\begin{proof}
+	Notice, firstly, as $D_1$ and $D_2$ are super derivations of degree $m_1$ and $m_2$, then, for any $k$, given $A_k(V)$,
+	$D_1(A_k(V)) \subseteq A_{k + m_1}(V)$ and, as such, $D_2(D_1(A_k(V))) \subseteq A_{k + m_1 + m_2}(V)$. Similarly,
+	$D_1(D_2(A_k(V))) \subseteq A_{k + m_1 + m_2}(V)$. We need to check the antiderivation property. Calculating $[D_1,D_2]$ on $a \in A_k(V)$ and
+	$b \in A_l(V)$:
+	Let's expand it by parts, first internaly (using the property inside the arguments):
+	$$D_1((D_2a)b +  (-1)^{km_2} a(D_2b)) - (-1)^{m_1m_2} D_2((D_1a)b +  (-1)^{km_1} a(D_1b))$$
+	Then on the outer layer:
+	\begin{align*}
+		[D_1,D_2](a,b) & = [D_1\circ D_2](a) b + (-1)^{(k + m_2)m_1}(D_2a)(D_1b)                       \\
+		               & + (-1)^{km_2}((D_1a)(D_2b) + (-1)^{km_1}a[D_1 \circ D_2](b))                  \\
+		               & - (-1)^{m_1m_2}([D_2\circ D_1](a) b + (-1)^{(k + m_1)m_2}(D_1a)(D_2b))        \\
+		               & - (-1)^{m_1m_2}( (-1)^{km_1} ((D_2a)(D_1b) + (-1)^{km_2}a[D_2 \circ D_1](b)))
+	\end{align*}
+	Which is absolutely terrible to read, but we may organize it a bit better, cancelling $(-1)^{(k + m_2)m_1}$ with
+	$- (-1)^{m_1m_2}( (-1)^{km_1}$; And $(-1)^{km_2}$ with $- (-1)^{m_1m_2}(-1)^{(k + m_1)m_2}$. Yielding
+	$$[D_1\circ D_2](a) b + (-1)^{k(m_1 + m_2)}a[D_1 \circ D_2](b) - (-1)^{m_1m_2}\bigg([D_2\circ D_1](a)b + (-1)^{k(m_1 +m_2)}a[D_2 \circ D_1](b) \bigg)$$
+	Which is finally equal to:
+	$$[D_1, D_2](a) b - (-1)^{k(m_1 + m_2)}a[D_1 \circ D_2](b)$$
 \end{proof}
