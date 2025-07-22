@@ -1,0 +1,212 @@
+\renewcommand{\thesection}{\Alph{section}}
+\chapter{Appendices}
+\section{Point-Set Topology}
+\subsection{Exercises}
+
+\begin{customprob}{A.5}
+\end{customprob}
+\begin{proof}
+	We know, that for every $\alpha$, $I_\alpha \subset \sum_\beta I_\beta$, so we find that
+	$$Z\bigg(\sum_\alpha I_\alpha \bigg) \subset Z(I_\alpha)$$
+	As this is valid for every $\alpha$,
+	$$ Z\bigg(\sum_\alpha I_\alpha \bigg) \subset \bigcap_\alpha Z(I_\alpha)$$
+	The other side is true, for $p$ is a zero of every element of the basis, then it is a common zero for all elements in the ideal.
+
+	For the second part, notice, by looking at generators that $Z(I) \cup Z(J) \subset Z(IJ)$.
+	Now consider $p \in Z(IJ)$, then we know that $p$ is a common zero of all pairs $f_ig_j$, with
+	$f_i \in I$ and $g_j \in J$. Now suppose that there are $f \in I, g \in J$ s.t $f(p) \neq 0$ and $g(p) \neq 0$.
+	As we are in a domain, $f(p)g(p) \neq 0$, as such $p \not \in Z(IJ)$.
+\end{proof}
+
+\begin{customprob}{A.33}
+\end{customprob}
+\begin{proof}
+	Let $F_1, F_2$ be two closed sets, by proposition A.32, they are compact. For each element $p \in F_2$, apply proposition A.31
+	finding open sets $U_p,V_p$ s.t $F_1 \subset U_p$ and $p \in V_p$. Now, as $F_2$ is compact, take a finite cover
+	$$F_2 \subset \bigcup_\alpha V_\alpha = B$$
+	and a finite intersection:
+	$$F_1 \subset \bigcap_\alpha U_\alpha = A$$
+	Notice $A\cap B = \varnothing$, as:
+	$$A \cap B = \bigcup_\alpha (V_\alpha \cap A) \subset \bigcup_\alpha (V_\alpha \cap U_\alpha) = \varnothing$$
+\end{proof}
+
+\begin{customprob}{A.37}
+\end{customprob}
+\begin{proof}
+	Given a covering of the union, take a finite subcover for each of the finite compacts. There are only finitely many open sets chosen.
+\end{proof}
+
+\begin{customprob}{A.53}
+\end{customprob}
+\begin{enumerate}[label=(\alph*)]
+	\item \begin{proof}
+		      $\overline{A} \cup \overline{B}$ is a closed set that contains $A \cup B$, so $\overline{A \cup B} \subseteq \overline{A} \cup \overline{B}$.
+		      But also, as $A \subset A \cup B$ and $B \subset A \cup B$, we have $\overline{A} \subset \overline{A \cup B}$ and
+		      $\overline{B} \subset \overline{A \cup B}$. So  $\overline{A} \cup \overline{B} \subset \overline{A \cup B}$.
+	      \end{proof}
+	\item \begin{proof}
+		      Just as before, $\overline{A} \cap \overline{B}$ is a closed set that contains $A \cap B$.
+	      \end{proof}
+\end{enumerate}
+
+\subsection{Problems}
+\begin{problem}
+\end{problem}
+\begin{proof}
+	This is almost tautological. If $(u,v) \in (U_1 \cap U_2) \times (V_1 \cap V_2)$, then $u \in U_1$ with $v \in V_1$ and
+	$u \in U_2$ and $v \in V_2$, so $(u,v) \in U_1 \times V_1 \cap U_2 \times V_2$. Similarly, if $(u,v) \in U_1 \times V_1 \cap U_2 \times V_2$,
+	then $u \in U_1 \cap U_2$ and $v \in V_1 \cap V_2$, so $(u,v) \in (U_1 \cap U_2) \times (V_1 \cap V_2)$.
+\end{proof}
+
+\begin{problem}
+\end{problem}
+
+\begin{proof}
+	$$(U_1 \cap U_2) \cap (V_1 \cup V_2) = (U_1 \cap U_2 \cap V_1) \cup (U_1 \cap U_2 \cap V_2) = \varnothing$$
+\end{proof}
+
+\begin{problem}
+\end{problem}
+
+\begin{enumerate}[label=(\alph*)]
+	\item \begin{proof}
+		      Each $F_i$ is of the form $(U_i)^c$. As such, we find
+		      $$\bigcup_{i=1}^{n} F_i = \bigcup_{i=1}^{n} (U_i)^c = \bigg( \bigcap_{i=1}^{n} U_i \bigg)^c$$
+		      But, $\bigcap_{i=1}^{n} U_i$ is open, so our finite union is closed.
+	      \end{proof}
+	\item \begin{proof}
+		      By exactly the same expression:
+		      $$\bigcap_{i=1}^{n} F_i = \bigcap_{i=1}^{n} (U_i)^c = \bigg( \bigcup_{i=1}^{n} U_i \bigg)^c$$
+	      \end{proof}
+\end{enumerate}
+
+%only now did I create a command for begin problem end problem, i will use it from now on, i might come back and
+% substitute the previous ones later
+\prob
+\begin{proof}
+	For $p \in ]a,a[^n$, $ |p| < \sqrt{n}a$. And if $p \in B(0, \sqrt{n}a)$, then for each coordinate, $|p^i| < \sqrt{n}a$, as such
+	$p \in ]\sqrt{n}a,\sqrt{n}a[^n$. Now, to prove the cubes form a basis, we use the definition, for every open set $U$ and $p \in U$,
+	choose the ball centered in $p$ contained in $U$ and the open cube centered in $p$ contained in the ball.
+\end{proof}
+
+\prob
+\begin{proof}
+	$A^c$ is open, $B^c$ is open, so $A^c\times Y$ and $X \times B^c$ are open. So $A \times Y$ and $X \times B$ are closed,
+	and we have $A \times Y \cap  X \times B = A \times B$ closed.
+\end{proof}
+
+\prob
+\begin{proof}
+	If $S$ is Haussdorf, consider $(a,b) \in S\times S - \Delta$. There are disjoint open sets $A,B$ with $a \in A$ and $b \in B$,
+	then $A \times B \subset S\times S - \Delta$ is a open neighborhood of $(a,b)$, as $(a,b)$ were arbitrary, $\Delta$ is closed.
+	Now, if $\Delta$ is closed, $S\times S - \Delta$ is open, and if $a \neq b \in S$, $(a,b) \in S\times S - \Delta$ is contained in
+	some open neighborhood $A \times B$ (because these sets form a basis for $S\times S$). Take, as  before $A$ and $B$.
+\end{proof}
+
+\prob
+
+\begin{proof}
+	Consider an open set $A = \bigcup_\alpha U_\alpha \times V_\alpha$. We find that $\pi(A) = \bigcup_\alpha U_\alpha$ which is open.
+\end{proof}
+
+\prob
+\begin{proof}
+	If $f$ is continuous, then the preimage of every open set is open. In particular, given $p$, the preimage of the open ball $B(f(p),\eps)$
+	is an open set of $A$, which contains $p$. As $p \in f^{-1}(B(f(p), \eps)$ open, there is $\delta > 0$ s.t. $B(p,\delta) \subset f^{-1}(B(f(p), \eps)$
+	as we wanted to show.
+
+	For the converse, sps $f$ satisfies the $\eps$-$\delta$ criterion. Consider $V$ open set of $R^n$, if $V = \varnothing$, then
+	we have nothing to prove, as the preimages of $V$ is the empty set, which is open in A. Now let $f(p) \in V$, because $V$ is open, there is $r>0$ s.t.
+	$B(f(p), r) \subset V$. By the criterion, there is $\delta > 0$ s.t. $f(B(p,\delta)) \subset B(f(p), r)$, that is, $B(p,\delta) \subset f^{-1}(V)$, which means
+	$f^{-1}(V)$ is open - as p was arbitrary.
+\end{proof}
+
+\prob
+\begin{proof}
+	For any function $f:X \to Y$ and set $A \subset Y$, $f^{-1}(A^c) = (f^{-1}(A))^c$. As such, if $f$ is continuous
+	and $F = U^c$ is a closed set. $f^{-1}(F) = f^{-1}(U^c) = (f^{-1}(U))^c$ which is closed.
+	Absolutely the same proof is valid for proving the assertion from the closed to the open sets.
+\end{proof}
+
+\prob
+\begin{proof}
+	We know that the projections are continuous, as such, if $f$ is continuous, so are their compositions.
+	If both projections are continuous, then by noticicng that $f^{-1}(U \times V) = f_1^{-1}(U) \cap f_2^{-1}(V)$ which
+	is a finite intersection of open sets, we check that $f$ is continuous. (To generalize to any open set in the product topology, separate it
+	into basis elements)
+\end{proof}
+
+\prob
+\begin{proof}
+	Sps $f \times g$ is continuous, then given an open set $U \subset X'$, consider $(f\times g)^{-1}(U \times Y') = f^{-1}(U) \times Y$ which is open
+	by the continuity of $f \times g$. By problem A.7, $f^{-1}(U)$ is open. The same argument is valid for $g$.
+
+	If $f,g$ are continuous, and $\bigcup_\alpha U'_\alpha \times V'_\alpha = A$ is an open set of $X'\times Y'$, then $(f \times g)^{-1}(A)
+		= f^{-1}(\bigcup_\alpha U'_\alpha) \times g^{-1}(\bigcup_\alpha V'_\alpha)$ is open as well.
+\end{proof}
+
+\prob
+\begin{proof}
+	The inverse function $f^{-1}$ has the closed pre-images property (because $f$ is closed). So by a previous problem $f$ is continuous.
+\end{proof}
+
+\prob
+\begin{proof}
+	Given any covering of the topological space, consider the countable set of basis elements contained in the cover, for
+	each such set, choose one set of the covering which contains it.
+\end{proof}
+
+\prob
+\begin{proof}
+	Take a covering of such union, take the union of the finite coverings for each compact set.
+\end{proof}
+
+\prob
+\begin{proof}
+	Notice that this is precisely the definion of connectedness for the subspace when noticing $A = (A\cap U) \cup (A \cap V)$.
+\end{proof}
+
+\prob
+\begin{proof}
+	If $C$ is a connected component and $p \in C$, by the local connected property, there is a connected neighborhood $V_p$, as $C \cup V_p$ is connected
+	$C \cup V_p = C$, as such, $V_p \subset C$. So $C$ is open, as $p$ was arbitrary.
+\end{proof}
+
+\prob
+\begin{proof}
+	Clearly, if $U \cap A \neq \varnothing$ then $U \cap \overline{A} \neq \varnothing$.
+	Now suppose there is $p \in U \cap \overline{A}$, then as $U$ is open, there is an open neighborhood $V_p \subset U$. But,
+	as $p \in \overline{A}$, every such neighborhood intersects $A$, so $V_p \cap A \neq \varnothing$.
+\end{proof}
+
+\prob
+\begin{proof}
+	Clearly a countable basis for the whole set will contain a countable basis for every neighborhood.
+\end{proof}
+
+\prob
+\begin{proof}
+	Sps, for the sake of contradiction that there were two limits, $x$ and $y$. As the space is $Hausdorff$,
+	there is a separation $U \cap V = \varnothing$ with $x \in U, y \not \in U$ and $x \not \in V, y \in V$.
+	By the property of the limit, eventually the sequence is forever in $U$, never in $V$, contradicting $y$ being a limit point.
+\end{proof}
+
+\prob
+\begin{proof}
+	$cl_S(A) \times Y$ is a closed set of $S \times Y$ that contains $A \times Y$, as such,
+	$cl_{S \times Y}(A \times Y) \subset cl_S(A) \times Y$.
+
+	Sps $(a,y) \in cl_S(A) \times Y$, then if $a \in A$, there's nothing to show. Then, suppose $a \in ac(A)$.
+	we must show $(a,y) \in ac(A \times Y)$. Take any open neighborhood of $(a,y)$ from the basis of the product topology,
+	then $(a,y) \in U\times V$, as such, $U \cap A \neq \varnothing$, and of course $U\times V \cap A \times Y \neq \varnothing$.
+\end{proof}
+
+\prob
+\begin{enumerate}[label=(\alph*)]
+	\item \begin{proof}
+		      Follows directly from proposition A.48 and $S = cl(A)$
+	      \end{proof}
+	\item \begin{proof}
+		      From A.18, we saw that any two non-empty open sets intersect. So every neighborhood intersects with A.
+	      \end{proof}
+\end{enumerate}

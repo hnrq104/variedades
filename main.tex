@@ -59,6 +59,8 @@
 \newcommand\eps{\varepsilon}
 \newcommand{\floor}[1]{\lfloor #1 \rfloor}
 \newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\prob}{\begin{problem} \end{problem}}
+\newcommand{\cprob}[1]{\begin{customprob}{#1}\end{customprob}}
 
 
 \renewcommand{\leq}{\leqslant}
@@ -132,5 +134,9 @@
 \tableofcontents
 % \input{chapters/introduction.tex}
 \input{chapters/chap1.tex}
+\input{chapters/chap2.tex}
+
+\counterwithin{section}{chapter}
+\input{chapters/appendices.tex}
 
 \end{document}
