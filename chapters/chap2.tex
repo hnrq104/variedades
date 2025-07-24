@@ -1,1 +1,79 @@
 \chapter{Manifolds}
+\section{Manifolds}
+\prob
+
+\begin{enumerate}[label=(\alph*)]
+	\item
+	      \begin{proof}
+		      We need to prove that it is continuous with continuous inverse. Let $A$ be an open set of $]-c,d[$.
+		      If $A \subset \R - \{0\}$ we know that $h^{-1}(A) = A$ which is an open set of $S$.
+
+		      So it suffices to look at a neighborhood of $0$. (By taking unions with the previous sets)
+		      But for any such open set $]a,b[$ we get
+		      $$h^{-1}(]a,b[) = \{A\} \cup h^{-1}(]a,0[\, \cup\, ]0,b[) = \{A\}\, \cup\, ]a,0[\, \cup\, ]0,b[$$
+		      which is an open set.
+
+		      The same idea is used for the inverse, if $A$ is not in the open set, there's nothing to show. If $A$ is present, then, expressed as a union,
+		      we have something in our open set of the form $(a,0) \cup \{A\} \cup (0,b)$ which has a open pre-image
+		      $(a,b)$.
+	      \end{proof}
+
+	\item \begin{proof}
+		      Consider the defined sets with rational entries, the basis for $\R - \{0\}$, for the $I_A$ and for the $I_B$. So
+		      $S$ is second countable. To show that it is not Hausdorff, consider any open neighborhoods of $A$ and $B$, they are never disjoint.
+	      \end{proof}
+\end{enumerate}
+
+\prob
+\begin{proof}
+	Consider a chart $(U, \phi)$ around $q$, and, as before, the restriction $U - \{p\}$ given by it. Now,
+	if $q$ were locally euclidian, then $U$ or a smaller neighborhood would be homeomorphic to a ball in $\R^n$. As such
+	by plucking out the $p$, the intersection of the sphere with $U$ would be homeomorphic to an open subset of $R^n$,
+	the same would hold for the hair without its root $p$. This is impossible by invariance of dimension, as the hair has dimension $1$, while
+	the sphere intersection would have dimension 2 and they cannot both be homeomorphic to an open subset of $\R^n$ of dimension $n$.
+\end{proof}
+
+\prob
+\begin{proof}
+	$$U_{14} = \{(x,y,z) \in S^2\;\mid y<0 \land x>0 \}$$
+	Also, we may, as before, express:
+	$$(\phi_4)^{-1}(x,z) = (x,-\sqrt{1 - x^2 + z^2},z)$$
+	The domain $\phi_4(U_14)$ is the half open disc of projection $(x,z) \in \mathbb{D}$ with $x > 0$.
+	The composition is simply
+	$$\phi_1((\phi_4)^{-1})(x,z) = (-\sqrt{1 - x^2 - z^2}, z)$$
+	Which is $C^\infty$ on its domain.
+
+	For $U_{16} = \{(x,y,z) \in S^2\;\mid x>0 \land z<0 \}$ the domain, which will be the projection onto the $yz$ plane,
+	is similarly a filled half disc, this time halfed on the second coordinate. $(y,z) \in \mathbb{D}$ with $z < 0$.
+	The function is similarly:
+	$$\phi_6((\phi_1)^{-1})(y,z) = (\sqrt{1 - y^2 - z^2}, y)$$
+\end{proof}
+
+\prob
+\begin{proof}
+	We know that $U_\alpha$ cover $M$ as such, there is $V$ in the atlas such that $p \in V$. Because
+	the atlas is maximal, every open subset of $V$ and with the induced chart is also in the atlas.
+	Just as $V \cap U$.
+\end{proof}
+
+\prob
+\begin{proof}
+	If the $U_\alpha$ cover $M$ and the $V_\beta$ cover $N$, certainly $U_\alpha \times V_\beta$ cover $M\times N$. To show
+	that it is a manifold it suffices to notice that the product of $C^\infty$ functions $\phi_\alpha \times \psi_\beta$ is
+	$C^\infty$, as each coordinate is.
+
+	But being rigorous $\phi \times \psi$ still is an homomorphism, as it is in each coordinate. And:
+	$$(\phi_x \times \psi_y) \circ (\phi_w \times \psi_z)^{-1}(a,b) = \phi_x \circ \phi_w^{-1}(a) \times \psi_y \circ \psi_z^{-1}(b)$$
+	which is still $C^\infty$. Here $a \in \R^m$ and $b \in \R^n$.
+\end{proof}
+
+\section{Smooth Maps on a Manifold}
+\subsection{Exercises}
+\cprob{6.14}
+\begin{proof}
+	Following proposition 6.13, taking the identity chart on $\R$ and the usual projective atlas for $S^1$, we see that, independent
+	of which projection we take (either on x or y) the composition is $C^\infty$.
+\end{proof}
+
+
+\subsection{Problems}

@@ -530,27 +530,27 @@ Doing exactly the same thing as the previous problem, we consider $x,y,z$ as 0-c
 \begin{align*}
 	dx & = \sin(\phi)\cos(\theta)d\rho + \rho\cos(\phi)\cos(\theta)d\phi - \rho\sin(\phi)\sin(\theta) d\theta \\
 	dy & = \sin(\phi)\sin(\theta)d\rho + \rho\cos(\phi)\sin(\theta)d\phi + \rho\sin(\phi)\cos(\theta) d\theta \\
-	dz & = \cos(\theta)d\rho - \rho\sin(\theta)d\theta                                                        \\
+	dz & = \cos(\phi)d\rho - \rho\sin(\phi)d\phi                                                        \\
 \end{align*}
-Now $dx \wedge dy \wedge dz$ is considerably more difficult to calculate, expanding each term linearly and taking only
-the non repeating values we may reduce it to:
+Now let's do it in parts,
 \begin{align*}
-	dx \wedge dy \wedge dz & = \sin(\phi)\cos(\theta)d\rho \wedge \rho\cos(\phi)\sin(\theta)d\phi \wedge (- \rho\sin(\theta)d\theta)   \\
-	                       & + \rho\cos(\phi)\cos(\theta)d\phi \wedge \sin(\phi)\sin(\theta)d\rho \wedge (- \rho\sin(\theta)d\theta)   \\
-	                       & + \rho\cos(\phi)\cos(\theta)d\phi \wedge \rho\sin(\phi)\cos(\theta) d\theta \wedge \cos(\theta)d\rho      \\
-	                       & + (- \rho\sin(\phi)\sin(\theta) d\theta) \wedge \rho\cos(\phi)\sin(\theta)d\phi \wedge  \cos(\theta)d\rho \\
+	dx \wedge dy &= \sin(\phi)\cos(\theta)\rho\cos(\phi)\sin(\theta) (d\rho \wedge d\phi) + \sin(\phi)\cos(\theta)\rho\sin(\phi)\cos(\theta) (d\rho \wedge d\theta)\\
+	&+ \rho\cos(\phi)\cos(\theta)\sin(\phi)\sin(\theta)(d\phi \wedge d\rho) + \rho\cos(\phi)\cos(\theta)\rho\sin(\phi)\cos(\theta) (d\phi \wedge d\theta) \\
+	&+ -\rho\sin(\phi)\sin(\theta)\sin(\phi)\sin(\theta)(d\theta \wedge d\rho) - \rho\sin(\phi)\sin(\theta)\rho\cos(\phi)\sin(\theta) (d\theta \wedge d\phi)
 \end{align*}
-Now, we may rearrange all products, and pull the functions on front yielding:
+Putting stuff together:
 \begin{align*}
-	dx \wedge dy \wedge dz & = -\rho^2\cos(\phi)\sin(\phi)\cos(\theta)(\sin(\theta))^2  (d\rho \wedge d\phi \wedge d\theta) \\
-	                       & + \rho^2\cos(\phi)\sin(\phi)\cos(\theta)(\sin(\theta))^2  (d\rho \wedge d\phi \wedge d\theta)  \\
-	                       & + \rho^2\cos(\phi)\sin(\phi)(\cos(\theta))^3 (d\rho \wedge d\phi \wedge d\theta)               \\
-	                       & +\rho^2\cos(\phi)\sin(\phi)\cos(\theta)(\sin(\theta))^2 (d\rho \wedge d\phi \wedge d\theta)    \\
+	dx\wedge dy &= \rho \sin^2(\phi)(d\rho \wedge d\theta) + \rho^2 \sin(\phi)\cos(\phi)(d\phi \wedge d\theta)\\
+				&= \rho \sin(\phi) [\sin(\phi) d\rho \wedge d\theta + \rho\cos(\phi) d\phi \wedge d\theta]
 \end{align*}
-Canceling the first two and using $\cos^3 + \cos \sin^2 = \cos$ on the latter, we find:
-$$ dx \wedge dy \wedge dz = \rho^2\cos(\phi)\sin(\phi)\cos(\theta) (d\rho \wedge d\phi \wedge d\theta)$$
-\end
-{proof}
+Now, we calculate $dx \wedge dy \wedge dz$, we have only two non zero expansions:
+\begin{align*}
+	dx \wedge dy \wedge dz &= \rho^2 \sin(\phi) \cos(\phi)^2 d\phi \wedge d\theta \wedge d\rho \\
+							&- \rho^2 \sin(\phi)^3 d\rho \wedge d\theta \wedge d\phi\\
+							&= \rho^2\sin(\phi) d\rho  \wedge d\phi \wedge d\theta
+\end{align*}
+
+\end{proof}
 
 \begin{problem}
 \end{problem}
