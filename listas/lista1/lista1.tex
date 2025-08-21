@@ -1,1 +1,79 @@
-\section{Lista 1}
+\section{Lista 1 (18/08/2025)}
+
+\prob
+\begin{proof}
+    Defina $(S^1, \mathcal{F})$ a parametrização do círculo pelas projeções esfereográficas. Isto é,
+    $$\mathcal{F} = \langle (S^1 - \{(0,1)\}, \pi_N), (S^1 - \{(0,-1)\}, \pi_S)\rangle$$
+    Onde $\pi_N : S^1 - \{(0,1)\} \to \R$ e $\pi_S : S^1 - \{(0,-1)\} \to \R$ são as projeções do polo norte e sul respectivamente. Vimos em aula que, com
+    essas coordenadas, $(S^1, \mathcal{F})$ é uma variedade $C^\infty$. Defina $\mathcal{G}$ elevando $\mathcal{F}$ ao cubo,
+    $$\mathcal{G} = \langle(S^1 - \{(0,1)\}, (\pi_N)^3), (S^1 - \{(0,-1)\}, (\pi_S)^3)\rangle$$
+    Afirmo que $\mathcal{G}$ é uma estrutura diferenciável de $S^1$. Isso segue do fato que $\pi_N^3$ e $\pi_S^3$ continuam sendo homeomorfismos 
+    e a composição de cartas dão a mesma coisa que em $\mathcal{F}$. Para verificar isso, escreva $s(t) = t^3$, então, no intervalo de definição $\R^*$,
+    \begin{align*}
+        [(\pi_N)^{3}] \circ [(\pi_S)^{3}]^{-1} (t) &= (s\circ \pi_N) \circ (s \circ \pi_S)^{-1} (t)\\
+                                                   &= s \circ \pi_N \circ \pi_S^{-1} \circ s^{-1} (t) \\
+                                                   &= s \circ \pi_N \circ \pi_S^{-1} (t^{1/3})\\
+                                                   &= s\bigg(\frac{1}{t^{1/3}}\bigg) = \frac{1}{t} \in C^{\infty}
+    \end{align*}
+    Onde na quarta igualdade usamos que $\pi_N \circ \pi_S^{-1}(x) : \R^* \to \R^* = 1/x$. A mesma conta serve para a outra composição $[s\circ \pi_S] \circ [s \circ \pi_N]^{-1}$.
+
+    Vamos provar que $\mathcal{F} \neq \mathcal{G}$. Suponha que fossem iguais, então a composição $\pi_N \circ [s \circ \pi_N]^{-1} (t) = s^{-1} (t) = t^{1/3}$ 
+    seria $C^{\infty}$ que sabemos que é falso. 
+
+    Para provar que são diffeomorfas, considere: 
+    \begin{align*}
+        F : (S^1, \mathcal{F}) &\to (S^1, \mathcal{G})\\
+            p \neq (0,1) &\mapsto (\pi_N^{-1}) \circ s^{-1} \circ \pi_N (p) \\
+            p \neq (0,-1) &\mapsto (\pi_S^{-1}) \circ s^{-1} \circ \pi_S (p) \\
+    \end{align*}
+    Do jeito que está, $F$ pode não parecer bem definida. Seja $p \neq (0,1)$, $(0,-1)$. Queremos mostrar que: 
+    \begin{equation}
+        (\pi_N^{-1}) \circ s^{-1} \circ \pi_N (p) = (\pi_S^{-1}) \circ s^{-1} \circ \pi_S (p)
+    \end{equation}
+    Mas temos que todas as funções são homeomorfismos e, principalmente, $\pi_N \circ \pi_S^{-1} = 1/x$.
+    Seja $\pi_N(p) = t$, então $t = [\pi_N \circ \pi_S^{-1}] \circ \pi_S (p) = 1/(\pi_S(p))$, ou seja $\pi_S(p) = 1/t$. Substituindo em (1)
+    \begin{align*}
+        (\pi_N^{-1}) \circ s^{-1}(t) &= (\pi_S^{-1}) \circ s^{-1}(1/t)\\
+        s^{-1}(t) &= (\pi_N \circ \pi_S^{-1}) \circ s^{-1}(1/t)\\
+        t^{1/3} &= \frac{1}{s^{-1}(1/t)} = t^{1/3}\\
+    \end{align*}
+    Onde na segunda igualdade aplicamos $\pi_N$ dos dois lados e na terceira usamos a composição usual. Como tudo pode ser feito de trás para frente,
+    provamos que $F$ está bem definida.
+
+    Agora basta provar que os seguintes mapas são diffeos $C^\infty$ em seus dominios (interseções das cartas):
+    \begin{enumerate}
+        \item $[s \circ \pi_N] \circ F \circ \pi_N^{-1}$
+        \item $[s \circ \pi_N] \circ F \circ \pi_S^{-1}$
+        \item $[s \circ \pi_S] \circ F \circ \pi_N^{-1}$
+        \item $[s \circ \pi_S] \circ F \circ \pi_S^{-1}$
+    \end{enumerate}
+    E para isso é só expandi-los, farei (1) e (2) pois os outros dois são análogos.
+    \begin{enumerate}
+        \item $s \circ \pi_N \circ F \circ \pi_N^{-1} = s \circ \pi_N \circ (\pi_N^{-1}) \circ s^{-1} \circ \pi_N \circ \pi_N^{-1} = id$
+        \item $s \circ \pi_N \circ F \circ \pi_S^{-1} = s \circ \pi_N \circ (\pi_N^{-1}) \circ s^{-1} \circ \pi_N \circ \pi_S^{-1} = 1/x$
+    \end{enumerate}
+\end{proof}
+
+
+Para não perder nenhum detalhe, vou enunciar aqui a principal ferramenta desta lista.
+\begin{theorem}
+    \label{trm:partition_of_unity}
+    Seja $M$ uma variedade diferenciável e $\{U_\alpha: \alpha \in A\}$ uma cobertura aberta de $M$. Então existe uma partição contável da unidade
+    $\{\varphi_i : i \in \N\}$ subordinada a cobertura $\{U_\alpha\}$ com $\supp \varphi_i$ compacto para cada $i$. Se não for preciso suportes compactos,
+    então existe uma partição da unidade $\{\varphi_\alpha\}$ subordinada à $\{U_\alpha\}$ ($\supp \varphi_\alpha \subset U_\alpha$) com no máximo
+    contáveis $\varphi_\alpha$ não identicamente nulos.
+\end{theorem}
+
+\prob
+
+\begin{proof}
+    Pelo Teorema da Partição da Unidade \ref{trm:partition_of_unity}, dada uma cobertura $\{U_\alpha\}$, existe uma partição $\varphi_\alpha$ subordinada.
+    Tome $V_\alpha = \varphi_\alpha^{-1}[(0,2)]$ abertos. Temos $\overline{V_\alpha} = \supp \varphi_\alpha \subset U_\alpha$ e, para todo $p \in M$, como $\sum_\alpha \varphi_\alpha(p) = 1$,
+    existe $\alpha$ tal que $\varphi_\alpha(p) > 0$, logo $p \in V_\alpha$. Portanto $M \subset \{V_\alpha\}$ e temos um refinamento de $\{U_\alpha\}$.
+\end{proof}
+
+\prob
+
+\begin{proof}
+    Dada $M$, seja $\{U_\alpha\}$ a cobertura aberta das cartas. Seja $\{V_\beta\}$ refinamento localmente finito de $\{U_\alpha\}$ com $\overline{V_\beta} \subset U_\alpha$ compacto para todo $\beta$. 
+\end{proof}
