@@ -1,6 +1,17 @@
 \section{Lista 1 (18/08/2025)}
 
-\prob
+Problemas feitos:
+\begin{enumerate}
+    \item Exercício \ref{prob:l1:1} : \checkmark
+    \item Exercício \ref{prob:l1:2} : \checkmark
+    \item Exercício \ref{prob:l1:3} : \checkmark
+    \item Exercício \ref{prob:l1:4} : \Frowny
+\end{enumerate}
+
+\begin{problem}
+\label{prob:l1:1}   
+\end{problem}
+
 \begin{proof}
     Defina $(S^1, \mathcal{F})$ a parametrização do círculo pelas projeções esfereográficas. Isto é,
     $$\mathcal{F} = \langle (S^1 - \{(0,1)\}, \pi_N), (S^1 - \{(0,-1)\}, \pi_S)\rangle$$
@@ -64,7 +75,9 @@ Para não perder nenhum detalhe, vou enunciar aqui a principal ferramenta desta 
     contáveis $\varphi_\alpha$ não identicamente nulos.
 \end{theorem}
 
-\prob
+\begin{problem}
+\label{prob:l1:2}   
+\end{problem}
 
 \begin{proof}
     Pelo Teorema da Partição da Unidade \ref{trm:partition_of_unity}, dada uma cobertura $\{U_\alpha\}$, existe uma partição $\varphi_\alpha$ subordinada.
@@ -72,8 +85,17 @@ Para não perder nenhum detalhe, vou enunciar aqui a principal ferramenta desta 
     existe $\alpha$ tal que $\varphi_\alpha(p) > 0$, logo $p \in V_\alpha$. Portanto $M \subset \{V_\alpha\}$ e temos um refinamento de $\{U_\alpha\}$.
 \end{proof}
 
-\prob
+\begin{problem}
+\label{prob:l1:3}   
+\end{problem}
 
 \begin{proof}
-    Dada $M$, seja $\{U_\alpha\}$ a cobertura aberta das cartas. Seja $\{V_\beta\}$ refinamento localmente finito de $\{U_\alpha\}$ com $\overline{V_\beta} \subset U_\alpha$ compacto para todo $\beta$. 
+    Sejam $A$ e $B$ fechados disjuntos de $M$, então $\{A^c, B^c\}$ formam uma cobertura de $M$. Pelo Teorema da Partição da Unidade \ref{trm:partition_of_unity}, existem
+    $\varphi_{A^c} \geq 0$ e $\varphi_{B^c} \geq 0$ em $C^\infty(M)$, com $\supp \varphi_{A^c} \subseteq A^c$ e  $\supp \varphi_{B^c} \subseteq B^c$. Como para todo $p \in M$, $\varphi_{A^c}(p) + \varphi_{B^c}(p) = 1$
+    e $\varphi_{B^c} = 0$ em $B$, então $\varphi_{A^c}(B) = \{1\}$. E achamos a segunda parte da questão, uma função contínua que vale $0$ em $A$ e $1$ em $B$.
+    Tome então os abertos disjuntos $W_A = \varphi_{A^c}^{-1}[(-\infty,1/2)]$ e $W_B =\varphi_{A^c}^{-1}[(1/2,\infty)]$. Claramente $A \subset W_A$ e $B \subset W_B$.
 \end{proof}
+
+\begin{problem}
+\label{prob:l1:4}   
+\end{problem}
