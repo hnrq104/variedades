@@ -92,10 +92,103 @@ Para não perder nenhum detalhe, vou enunciar aqui a principal ferramenta desta 
 \begin{proof}
     Sejam $A$ e $B$ fechados disjuntos de $M$, então $\{A^c, B^c\}$ formam uma cobertura de $M$. Pelo Teorema da Partição da Unidade \ref{trm:partition_of_unity}, existem
     $\varphi_{A^c} \geq 0$ e $\varphi_{B^c} \geq 0$ em $C^\infty(M)$, com $\supp \varphi_{A^c} \subseteq A^c$ e  $\supp \varphi_{B^c} \subseteq B^c$. Como para todo $p \in M$, $\varphi_{A^c}(p) + \varphi_{B^c}(p) = 1$
-    e $\varphi_{B^c} = 0$ em $B$, então $\varphi_{A^c}(B) = \{1\}$. E achamos a segunda parte da questão, uma função contínua que vale $0$ em $A$ e $1$ em $B$.
+    e $\varphi_{B^c} = 0$ em $B$, então temos
+    \begin{align*}
+        \varphi_{A^c}(A) = \{0\}\\
+        \varphi_{A^c}(B) = \{1\}\\
+    \end{align*}
+    E achamos a segunda parte da questão, uma função contínua que vale $0$ em $A$ e $1$ em $B$.
     Tome então os abertos disjuntos $W_A = \varphi_{A^c}^{-1}[(-\infty,1/2)]$ e $W_B =\varphi_{A^c}^{-1}[(1/2,\infty)]$. Claramente $A \subset W_A$ e $B \subset W_B$.
 \end{proof}
 
 \begin{problem}
 \label{prob:l1:4}   
 \end{problem}
+% Acredito não estar apto para a solução dessa questão, então, segue a solução que encontrei na internet para funções limitadas.
+
+% A ideia da prova é construir uma sequência de funções contínuas que convirjam uniformemente em $M$ e se aproximam de $f$ em $A$.
+% Como são funções contínuas convergindo uniformemente, o limite será contínuo em $M$. Para começar,
+% precisaremos do seguinte lema.
+% \begin{lemma}
+%     \label{l1:lemma:approx}
+%     Seja $A$ um fechado de $M$ e $f:A\to \R$ uma função limitada com $c = \sup_{a \in A} |f(a)|$. Então, existe uma função contínua $g : M \to \R$,
+%     com $|g| \leq c/3$ em $M$ e $|f - g| \leq 2c/3$ em $A$.
+% \end{lemma}
+% \begin{proof}
+%     Se $c = 0$, trivialmente, escolhemos $g = 0$. Se não, definimos os fechados disjuntos
+%     \begin{align*}
+%     E &= f^{-1}\{(-\infty, -c/3]\} \subseteq A\\
+%     F &= f^{-1}\{(c/3,\infty)\} \subseteq A
+%     \end{align*}
+%     Pela questão anterior, como $E$ e $F$ são fechados disjuntos de $M$, existe $h:M \to [0,1]$ contínua, com $h(E) = \{0\}$ e $h(F) = \{1\}$.
+%     Defina $g:M \to \R$ onde 
+%     $$g(p) = h(p)\frac{2c}{3} - \frac{c}{3}$$
+%     Então $g(E) = -c/3$, $g(F) = c/3$ e $g(p) \in [-c/3, c/3]$ para todo $p \in M$.
+
+%     Dessa definição, é claro que $|g| \leq c/3$. Além disso $|f - g| \leq 2c/3$,
+%     pois, se $p \in E$, 
+%     $$c/3 = h(p) \leq f(p) \leq c \Rightarrow 0 \leq f - g \leq 2c/3$$
+%     Se $p \in F$, semelhantemente
+%     $$0 \leq g - f \leq 2c/3$$
+%     E se $p$ não pertence a nenhum dos dois, então
+%     $$f(p) \in [-c/3, c/3] \quad \land \quad g(p) \in [-c/3, c/3]$$
+%     Logo $|f(p) - g(p)| \leq 2c/3$.
+% \end{proof}
+
+% \begin{prop}
+% Dados $f$, $A$ e $M$ como na descrição do problema. Existe uma sequência de funções $\{g_n\}$ com 
+% \begin{align*}
+%     |g_n(x)| &\leq c\frac{2^n}{3^{n+1}} \quad \forall x \in M\\
+%     |f - g_0 - \dots - g_n|(x) &:= |f - F_n(x)| \leq c\frac{2^{n+1}}{3^{n+1}} \quad \forall x \in A\\
+% \end{align*}
+% \end{prop}
+% \begin{proof}
+%     Aplique o lema \ref{l1:lemma:approx} em $f$ para obter $g_0$ satisfazendo as condições.  Depois aplicamos sucessivamente 
+%     a $f - g_0$ obtendo $g_1$, depois $f - g_0 - g_1$, obtendo $g_2$ e etc. Formalizando com indução.
+%     Suponha que conseguimos $(g_n)_{n=1}^{N}$, satisfazendo as condições, apliquemos o lema para
+%     $$f - F_{N} = f - \sum_{n = 0}^{N} g_n$$
+%     Note que, como os $f$ e os $g_n$ são limitados, podemos fazer isso após restrigir os $g_n$ em $A$. Ganhamos $g_{N+1}$ com
+%     \begin{align*}
+%         |g_{N+1}| &\leq \frac{\sup_{x \in A} |f - F_n(x)|}{3} \leq c \frac{2^{N+1}}{3^{N+2}}\\
+%         |f - F_n - g_{N+1}| &\leq \frac{2\sup_{x \in A} |f - F_n(x)|}{3} \leq c \frac{2^{N+2}}{3^{N+2}}\\
+%     \end{align*}
+%     Confirmando a Hipótese de Indução.
+% \end{proof}
+
+% \begin{prop}
+%     O somatório $\sum_{k=0}^{\infty} g_k$ é uma função contínua identica a $f$ em $A$.
+% \end{prop}
+% \begin{proof}
+%     Basta notar que, como 
+%     $$|g_n| \leq \frac{c}{3}\frac{2^n}{3^n}$$
+%     A sequência converge geométricamente, portanto uniformemente e o somatório é contínuo.
+%     Da mesma forma, vimos na proposição anterior que
+%     $$|f(x) - \sum_{k=0}^{n}g_n(x)| \leq c\frac{2^{n+1}}{3^{n+1}} \to 0 \forall x \in A$$
+%     Quando $n \to \infty$. Portanto a série é identica a $f$ em $A$.
+% \end{proof}
+
+Conversando na aula de segunda (25/08), perguntamos para o Prof. Heluani se deveríamos provar esse resultado (estender o acima para funções não limitadas). 
+Ele nos disse que o interesse maior nesse problema era mostrar que esse resultado (Teorema da Extensão de Tietze) é válido para Variédades vistas como 
+espaços topológicos. Isso é consequência de elas serem espaços normais (visto no problema anterior). Segue o enunciado do Teorema
+\begin{theorem}
+    (Extensão de Tietze) Seja $X$ um espaço topológico normal, $A \subseteq X$ um subconjunto fechado e $f : A \to \R$ uma função contínua. Então existe 
+    uma função contínua $\tilde{f}: X \to \R$ tal que a $\tilde{f}\arrowvert_A = f$. 
+\end{theorem}
+
+Sobre a extensão ser $C^\infty$, devemos dar uma definição para o que isso significaria - uma função ser suave em um fechado. Aqui segui a ideia 
+do Davi na monitoria, de que existe um abertinho maior em que ela está definida.
+Depois devemos verificar se é possível estender funções assim para toda a variedade.
+A resposta dessa afirmação é positiva, mas requer também um pouco mais de teoria do que vimos. A seguir temos uma tentativa.
+
+\begin{lemma}
+    \label{lemma:extensao_suave}
+    Seja $M$ uma variedade, $A \subseteq M$ um conjunto fechado e $U \supseteq A$ um aberto onde está definida uma função 
+    suave $f : U \to \R$. Existe uma função $\tilde{f} : M \to \R$ suave tal que as restrições $\tilde{f}_{A} = f_A$ são idênticas.
+\end{lemma}
+\begin{proof}
+    Para cada ponto $p \in A$, escolha uma vizinhança e uma função suave $(V_p, \tilde{f}_p)$ tal que $\tilde{f}_p: V_p \to \R$ é idêntica a $f$ em $V_p \cap A$. 
+    Isso é possível usando funções bump e aproveitando o fato que $M$ é localmente compacta - o que não foi provado. 
+    Tomamos uma partição da unidade $\{\varphi_p : p \in A\} \cup \{\varphi_{A^c}\}$ subordinada a cobertura $\{V_p : p \in A\} \cup \{A^c\}$. 
+    Para cada $p \in A$, o produto $\varphi_p \tilde{f}_p$ é $C^\infty$ em $V_p$ e tem uma extensão natural $0$ fora do 
+    suporte de $\varphi_p$. Definimos então $\tilde{f} = \sum_{p\in A} \varphi_p \tilde{f}_p$.
+\end{proof}
