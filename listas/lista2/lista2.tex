@@ -2,11 +2,11 @@
 
 Problemas feitos:
 \begin{enumerate}
-    \item Exercício \ref{prob:l2:1} : \Frowny
+    \item Exercício \ref{prob:l2:1} : \checkmark
     \item Exercício \ref{prob:l2:2} : \checkmark
-    \item Exercício \ref{prob:l2:3} : \Frowny
-    \item Exercício \ref{prob:l2:4} : \Frowny
-    \item Exercício \ref{prob:l2:5} : \Frowny
+    \item Exercício \ref{prob:l2:3} : \checkmark
+    \item Exercício \ref{prob:l2:4} : \checkmark
+    \item Exercício \ref{prob:l2:5} : \checkmark
 \end{enumerate}
 
 \begin{problem}
@@ -89,6 +89,7 @@ utilizada no curso.
 \end{theorem}
 
 \begin{theorem}
+    \label{trm:implicit_function}
     Assuma que $\psi: M^c \to N^d$ é $C^\infty$, que $n$ é um ponto de $N$, tal que $P = \psi^{-1}(n)$ é não vazio, e 
     que $d\psi: M_m \to N_{\psi(m)}$ é sobrejetiva para todo $m \in P$. Então $P$ tem uma estrutura diferenciável única
     tal que $(P,i)$ é subvariedade de $M$, onde $i$ é o mapa da inclusão. Além do mais, $i : P \to M$ é uma imersão, e a dimensão
@@ -99,24 +100,91 @@ utilizada no curso.
     \label{prob:l2:3} 
 \end{problem}
 \begin{proof}
+    Vamos provar que $\text{SL}(n,\R)$ é uma subvariedade de $\R^{n\times n}$ invocando o teorema anterior com a função $\det : \R^{n\times n} \to \R$.
+    Para isso, basta mostrar que $1$ é valor regular de $\det$, ou seja, se $A \in \text{SL}(n,\R)$, então $d(\det)\arrowvert_A$ é sobrejetiva em $\R$.
+    Como o contradomínio é $\R$, basta mostrar que em uma coordenada $x_{ij}$ vale que 
+    $$\frac{\partial \det}{\partial x_{ij}}\bigg\arrowvert_A \neq 0$$
+    Mas isso segue da decomposição de Cramer do determinante. Seja $X_{i,j}^c$ a matriz dos cofatores de uma matriz $X$ em $i,j$. Por Cramer, para qualquer $k \in [n]$,
+    \begin{equation}
+        \det(X) = \sum_{i = 1}^n (-1)^{k+i} x_{k,i} \det(X_{k,i}^c)
+    \end{equation}
+    Naturalmente,
+    $$\frac{\partial \det}{\partial x_{k,j}}\bigg\arrowvert_X = (-1)^{k+j} \det(X_{k,i}^c)$$
+    Como $\det(A) = 1$, aplicando a regra em $k = 1$, segue que existe alguma matriz de cofatores $A_{1,i}^c$ com determinante
+    não nulo. Portanto,
+    $$\frac{\partial \det}{\partial x_{1,i}}\bigg\arrowvert_A = (-1)^{1+i} \det(A_{1,i}^c) \neq 0$$
+    e o diferencial é sobrejetivo. Por \ref{trm:implicit_function}, $\text{SL}(n,\R)$ é uma imersão em $\R^{n\times n}$ de dimensão 
+    $n^2 - 1$.
 \end{proof}
 
 
 \begin{problem}
     \label{prob:l2:4} 
 \end{problem}
-Eu sei resolver esse problema de duas formas, a mais natural para mim caiu na minha prova em Análise no Rn e 
-eu falhei feio, então me lembro bem da solução. Esse método, no entanto, usa uma versão um pouco diferente do 
-Teorema da função Implícita e fatos sobre a derivada de Frechet que fogem ao escopo deste curso, vou escrevê-lo porque 
-acredito ser uma solução válida também. A outra forma de fazer tem uma delineação no Warner em 1.40 - essa é a que presumo
-que o professor esteja pedindo. De qualquer forma, escreverei ambas. 
+% Eu sei resolver esse problema de duas formas, a mais natural para mim caiu na minha prova em Análise no Rn e 
+% eu falhei feio, então me lembro bem da solução. Esse método, no entanto, usa uma versão um pouco diferente do 
+% Teorema da função Implícita e fatos sobre a derivada de Frechet que fogem ao escopo deste curso, vou escrevê-lo porque 
+% acredito ser uma solução válida também. A outra forma de fazer tem uma delineação no Warner em 1.40 - essa é a que presumo
+% que o professor esteja pedindo. De qualquer forma, escreverei ambas. 
+\textbf{Primeira} prova usual rápida.
 \begin{proof}
-    
+    Considere $F: \text{GL}(d,\R) \to \R^{d(d+1)/2}$ tal que
+    $$F(A) = A\cdot A^{T}$$
+    Note que como $(A \cdot A^T)^T = A\cdot A^T$, $F(A)$ é simétrica e o contradomínio faz sentido.
+    Vamos provar que $I$ (como matriz simétrica) é valor regular da função $F$ para que possamos aplicar \ref{trm:implicit_function}.
+    A diferencial de $F$ em $A$ em relação a um vetor $H$ pode ser obtida facilmente considerando a diferença (que é linear) de $F(A + H) - F(A)$.
+    $$DF_A(H) = F(A + H) - F(A) = H\cdot A^T + A \cdot H^T$$
+    Para mostrar que essa diferencial é sobrejetiva, tome $B$ tal que $B = B^T$, então escolhendo $H = BA/2$, temos que 
+    $$DF_A(BA/2) = \frac{(BA)A^T}{2} + \frac{A(BA)^T}{2} = \frac{B}{2} + \frac{B^T}{2} = B$$
+    Onde usamos que $AA^T = I$ na segunda igualdade. Portanto, $DF_A$ é sobrejetiva para cada $A \in F^{-1}(I)$, logo, 
+    pelo Teorema da Função Implícita, $F^{-1}(I)$ é uma subvariedade de $\text{GL}(d,\R)$ de dimensão $d(d-1)/2$.
 \end{proof}
+
+\textbf{Segunda} prova, delineada pelo Warner em 1.40(b).
+\begin{proof}
+    Novamente, seja $F$ como na prova anterior. Usaremos a mesma estratégia, queremos mostrar 
+    que $dF_A$ é sobrejetiva para cada $A \in O(d)$. Dado $A \in O(d)$, defina o diffeo $r_A : \text{GL}(n,\R) \to \text{GL}(n,\R)$ 
+    que para $M \in \text{GL}(n,\R)$,
+    $$r_A(M) = M\cdot A$$
+    Quando se espressa $d(r_A)$ em coordenadas é claro que - como função linear, $d(r_A) = A$, logo é $C^\infty$. Da mesma forma, a inversa 
+    $r_{A^{-1}}$ é $C^\infty$. Aqui está a ideia principal do Warner, note que 
+    $$F = F \circ r_A$$
+    pois, para todo $X$,
+    $$F(X) = XX^T = (XA)(XA)^T = F \circ r_A (X)$$
+    Portanto podemos diferenciar a função da direita ao invés de somente $F$, usando a regra da cadeia, encontramos que
+    $$dF_A = d(F \circ r_{A^{-1}})_A = dF_{I} \circ d(r_{A^{-1}})_A = dF_{I} \circ A^{-1}$$
+    Como $A^{-1}$ é invertível, para saber se $dF_A$ é sobrejetiva, basta verificar se $dF_I$ é sobrejetiva.
+    Mas isso seguirá imediatamente do fato que para $i \leq j$ e $l \leq k$,
+    $$\frac{\partial F_{i,j}}{\partial x_{l,k}}\bigg\arrowvert_I = \delta^{i,j}_{l,k}$$
+    Isso é a derivada de $F$ em $I$ em relação a coordenada $(l,k)$ é justamente a matriz simétrica com $1$ somente na 
+    coordenada $(l,k)$ e $0$ nas outras entradas.
+    Para a prova, note que
+    \begin{equation}
+        F(X)_{i,j} = \sum_{k = 1}^{d} x_{i,d}  x_{j,d}
+    \end{equation}
+    Logo, se $l,k = i,j$,
+    $$\frac{\partial F_{i,j}}{\partial x_{i,j}}\bigg\arrowvert_{X = I} = x_{j,j}|_I = 1$$
+    Se $l \neq i$,
+    $$\frac{\partial F_{i,j}}{\partial x_{l,k}} = 0$$
+    Pois $x_{l,k}$ sequer aparece na soma (3). Se $l = i$, mas $k \neq j$,
+    então
+    $$\frac{\partial F_{i,j}}{\partial x_{i,k}}\bigg\arrowvert_{X = I} = x_{j,k}|_I = 0$$
+    E provamos a a identidade que queriámos. Portanto, $dF_I$ é sobrejetiva, por consequência, $dF_A$ é sobrejetiva 
+    para todo $A \in O(d)$, logo $O(d)$ é naturalmente subvariedade de $\text{GL}(n,\R)$.
+
+
+\end{proof}
+
 
 \begin{problem}
     \label{prob:l2:5}
 \end{problem}
+Esse problema é capcioso, eu infelizmente já havia visto a solução antes da lista estar disponível.
 \begin{proof}
-    
+    Como $M$ é compacto, a imagem $f(M)$ é compacta, logo existe $m \in M$ tal que a primeira coordenada $f_1(m)$ atinge o valor máximo.
+    Dado $(x_i)_{i=1}^d$ um sistema de coordenadas na vizinhança de $m$,  como $f_1(m)$ é máximo, para cada $i$
+    $$\frac{\partial f_1}{\partial x_i} = 0$$
+    Portanto a matriz jacobiana 
+    $$\bigg\{ \frac{\partial f_i}{\partial x_j}\bigg\}_{i,j \in [d]}$$
+    é composta de $0$'s na primeira coluna. $df$ não pode ser sobrejetiva.  
 \end{proof}
