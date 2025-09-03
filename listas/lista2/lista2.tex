@@ -1,0 +1,122 @@
+\section{Lista 2 (02/09/2025)}
+
+Problemas feitos:
+\begin{enumerate}
+    \item Exercício \ref{prob:l2:1} : \Frowny
+    \item Exercício \ref{prob:l2:2} : \checkmark
+    \item Exercício \ref{prob:l2:3} : \Frowny
+    \item Exercício \ref{prob:l2:4} : \Frowny
+    \item Exercício \ref{prob:l2:5} : \Frowny
+\end{enumerate}
+
+\begin{problem}
+    \label{prob:l2:1}    
+\end{problem}
+\begin{proof}
+    Considere o atlas de $S^1 \subset \C$ gerado por $(U, \theta_1)$ e $(V, \theta_2)$
+    onde  $U = S^1 - \{1\}$ e $\theta_1$ é definida tomando o ramo apropriado do logaritmo de forma que
+    \begin{align*}
+        \theta_1 :U &\to (0,2\pi)\\
+            z &\mapsto \frac{\log(z)}{i} 
+    \end{align*}
+    Semelhantemente, $V = S^1 - \{-1\}$ e escolhemos um outro ramo de $\log$ a fim que
+    \begin{align*}
+        \theta_2 : V &\to (-\pi,\pi)\\
+            z &\mapsto \frac{\log(z)}{i} 
+    \end{align*}
+    Sabemos que esses ramos $\log$ são diffeos em seus domínios e a composição
+    $\theta_1 \circ \theta_2^{-1} : (-\pi,0) \cup (0,\pi)$
+    dada por 
+    $$
+        \theta_1 \circ \theta_2^{-1} (x) =
+        \begin{cases}
+        x & \text{se } 0 < x < \pi\\
+        x + \pi & \text{se } 0 < x < \pi\\
+        \end{cases}
+    $$
+    Essa função é $C^\infty$, pois os abertos da definição são disjuntos. Da mesma forma $\theta_2 \circ \theta_1^{-1} \in C^\infty$.
+
+    Para mostrar que $e^{ix} : \R \to S^1$ é $C^\infty$, basta ver que a composições com os mapas é $C^\infty$. Para 
+    todo $x \in \R$, existe $n \in \Z$ tal que
+    $$x \in (2\pi n, 2\pi(n+1)) \quad \lor \quad x \in (2\pi n - \pi, 2\pi(n+1) - \pi)$$
+    No primeiro caso, claramente $\theta_1(e^{ix}) = x - 2\pi n$ que é $C^\infty$. No segundo caso, 
+    $\theta_2(e^{ix}) = x - 2\pi n - \pi \in \C^\infty$. Assim mostramos que para qualquer
+    ponto de $\R$, existe um aberto $U$ tal que a composição $\theta_i \circ e^{ix}\arrowvert_U$ é $C^\infty$,
+    como consequência, $e^{ix}$ é $C^\infty$.
+\end{proof}
+
+
+\begin{problem}
+    \label{prob:l2:2} 
+\end{problem}
+\begin{proof}
+    Tome o mesmo atlas que na questão anterior, note que se $(U, \theta)$ é uma carta e $V \subset U$, 
+    então $(V, \theta\arrowvert_V)$ é óbviamente uma carta do atlas também.
+    Para mostrar que $z^2 \in C^\infty$ vamos verificar então que para todo $z \in S^1$, existe um uma carta $(A, \theta)$ ao redor de $z$
+    e uma carta $(B, \phi)$ ao redor de $z^2$ tal que a composição $\phi \circ z^2 \circ \theta^{-1}$ é $C^\infty$.
+    
+    Separamos $4$ cartas de $S^1$ e qual coordenadas usaremos na imagem de cada vizinhança,
+    \begin{enumerate}
+        \item $(A_1 = \{z : \text{Re}(z) > 0\}$, $\theta_2\arrowvert_{A_1}$) e  $(B_1 = V, \theta_2)$
+        \item $(A_2 = \{z : \text{Im}(z) > 0\}$, $\theta_1\arrowvert_{A_2}$) e  $(B_2 = U, \theta_1)$ 
+        \item $(A_3 = \{z : \text{Re}(z) < 0\}$, $\theta_1\arrowvert_{A_3}$) e  $(B_3 = U, \theta_1)$ 
+        \item $(A_4 = \{z : \text{Im}(z) < 0\}$, $\theta_2\arrowvert_{A_4}$) e  $(B_4 = V, \theta_2)$  
+    \end{enumerate}
+    Claramente os $A_i$ cobrem $S^1$ e como para cada $i$, $z^2(A_i) = B_i$, estamos cobrindo a imagem de  $z^2$.
+    Substituindo os índices, falta verificar que em cada item que a composição $\theta_k \circ z^2 \circ (\theta_k\arrowvert_{A_i})^{-1}$ é $C^\infty$.
+    Calculando-as, temos
+    \begin{enumerate}
+        \item $\theta_2 \circ z^2 \circ (\theta_2\arrowvert_{A_1})^{-1} : (-\pi/2, \pi/2) \to (-\pi, \pi)$ é tal que $z \mapsto 2z$
+        \item $\theta_1 \circ z^2 \circ (\theta_1\arrowvert_{A_2})^{-1} : (0, \pi) \to (0, 2\pi)$ é tal que $z \mapsto 2z$
+        \item $\theta_1 \circ z^2 \circ (\theta_1\arrowvert_{A_3})^{-1} : (\pi/2, 3\pi/2) \to (-\pi, \pi)$ é tal que $z \mapsto 2z - 2\pi$
+        \item $\theta_2 \circ z^2 \circ (\theta_2\arrowvert_{A_4})^{-1} : (-\pi, 0) \to (0, 2\pi)$ é tal que $z \mapsto 2z + 2\pi$
+    \end{enumerate}
+    Como todas são $C^\infty$, $z^2$ é $C^\infty$.
+
+\end{proof}
+
+Para os próximos dois problemas, vamos enunciar a ferramenta principal e sua versão em variedades - presumo que ainda será bastante 
+utilizada no curso.
+\begin{theorem}
+    (Teorema da Função Implícita) Seja $U \subset \R^{c -d}\times \R^d$ aberto e $f: U \to \R^d \in C^\infty$. Denote o sistema canônico de coordenadas em
+    $\R^{c -d}\times \R^d$ por $(r_1, \dots, r_{c-d}, s_1, \dots, s_d)$. Suponha que no ponto $(r_0,s_0) \in U$
+    $$f(r_0, s_0) = 0$$
+    e que a matriz
+    $$\bigg\{\frac{\partial f_i}{\partial s_j}\bigg\}_{i,j = 1,\dots,d}$$
+    é não singular. Então existe uma vizinhança aberta $V$ de $r_0$ em $R^{c-d}$ e uma vizinhança aberta $W$ de $s_0$ em $\R^d$
+    tal que $V \times W \subset U$, e existe um mapa $C^\infty$ $g:V\to W$ tal que para cada par $(p,q) \in V\times W$
+    $$f(p,q) = 0 \iff q = g(p)$$ 
+\end{theorem}
+
+\begin{theorem}
+    Assuma que $\psi: M^c \to N^d$ é $C^\infty$, que $n$ é um ponto de $N$, tal que $P = \psi^{-1}(n)$ é não vazio, e 
+    que $d\psi: M_m \to N_{\psi(m)}$ é sobrejetiva para todo $m \in P$. Então $P$ tem uma estrutura diferenciável única
+    tal que $(P,i)$ é subvariedade de $M$, onde $i$ é o mapa da inclusão. Além do mais, $i : P \to M$ é uma imersão, e a dimensão
+    de $P$ é $c - d$.
+\end{theorem}
+
+\begin{problem}
+    \label{prob:l2:3} 
+\end{problem}
+\begin{proof}
+\end{proof}
+
+
+\begin{problem}
+    \label{prob:l2:4} 
+\end{problem}
+Eu sei resolver esse problema de duas formas, a mais natural para mim caiu na minha prova em Análise no Rn e 
+eu falhei feio, então me lembro bem da solução. Esse método, no entanto, usa uma versão um pouco diferente do 
+Teorema da função Implícita e fatos sobre a derivada de Frechet que fogem ao escopo deste curso, vou escrevê-lo porque 
+acredito ser uma solução válida também. A outra forma de fazer tem uma delineação no Warner em 1.40 - essa é a que presumo
+que o professor esteja pedindo. De qualquer forma, escreverei ambas. 
+\begin{proof}
+    
+\end{proof}
+
+\begin{problem}
+    \label{prob:l2:5}
+\end{problem}
+\begin{proof}
+    
+\end{proof}
