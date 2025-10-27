@@ -1,6 +1,7 @@
 \documentclass{article}
 
 \usepackage{amsmath,amssymb,amsthm,bbm,mathtools,calc,verbatim,enumitem,tikz,url,mathrsfs,cite,fullpage,hyperref,bm,marvosym}
+\usepackage{tikz-cd}
 \usepackage{dsfont}
 \usepackage{float}
 \usepackage{subcaption}
@@ -40,6 +41,16 @@
 \newenvironment{customexercise}[1]
   {\renewcommand\theinnercustomexercise{#1}\innercustomexercise}
   {\endinnercustomexercise}
+
+\newcounter{step}
+\newenvironment{proofsteps}{
+  \setcounter{step}{0}
+  \begin{list}{\textbf{Step \Roman{step}.}}{\usecounter{step}
+  \setlength{\leftmargin}{1.5em}
+  \setlength{\itemsep}{0.3em}}
+}{
+  \end{list}
+}
 
 \newenvironment{clmproof}[1]{\begin{proof}[Proof of Claim~\ref{#1}]\let\qednow\qedsymbol\renewcommand{\qedsymbol}{}}{\; \qednow \end{proof}}
 
@@ -161,5 +172,6 @@ Por enquanto encontrei os seguintes usos de notação pessoal no texto:
 
 \input{lista1/lista1.tex}
 \input{lista2/lista2.tex}
+\input{lista3/lista3.tex}
 
 \end{document}

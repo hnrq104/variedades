@@ -1,3 +1,4 @@
+\clearpage
 \section{Lista 2 (02/09/2025)}
 
 Problemas feitos:
@@ -156,11 +157,11 @@ utilizada no curso.
     Como $A^{-1}$ é invertível, para saber se $dF_A$ é sobrejetiva, basta verificar se $dF_I$ é sobrejetiva.
     Mas isso seguirá imediatamente do fato que para $i \leq j$ e $l \leq k$,
     $$\frac{\partial F_{i,j}}{\partial x_{l,k}}\bigg\arrowvert_I = \delta^{i,j}_{l,k}$$
-    Isso é a derivada de $F$ em $I$ em relação a coordenada $(l,k)$ é justamente a matriz simétrica com $1$ somente na 
+    Isso é, a derivada de $F$ em $I$ em relação a coordenada $(l,k)$ é justamente a matriz simétrica com $1$ somente na 
     coordenada $(l,k)$ e $0$ nas outras entradas.
     Para a prova, note que
     \begin{equation}
-        F(X)_{i,j} = \sum_{k = 1}^{d} x_{i,d}  x_{j,d}
+        F(X)_{i,j} = \sum_{m = 1}^{d} x_{i,m}  x_{j,m}
     \end{equation}
     Logo, se $l,k = i,j$,
     $$\frac{\partial F_{i,j}}{\partial x_{i,j}}\bigg\arrowvert_{X = I} = x_{j,j}|_I = 1$$
@@ -186,5 +187,5 @@ Esse problema é capcioso, eu infelizmente já havia visto a solução antes da 
     $$\frac{\partial f_1}{\partial x_i} = 0$$
     Portanto a matriz jacobiana 
     $$\bigg\{ \frac{\partial f_i}{\partial x_j}\bigg\}_{i,j \in [d]}$$
-    é composta de $0$'s na primeira coluna. $df$ não pode ser sobrejetiva.  
+    é composta de $0$'s na primeira linha. $df$ não pode ser sobrejetiva.  
 \end{proof}

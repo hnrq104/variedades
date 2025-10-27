@@ -1,0 +1,263 @@
+\clearpage
+\section{Lista 3 (15/10/25)}
+
+Como não consegui responder quase nenhum problema completamente, não vou colocar a lista de problemas resolvidos.
+
+\begin{theorem}
+    \label{trm:quotient_manifolds} (3.58 Warner) Seja $H$ um subgrupo fechado do grupo de Lie $G$. Seja $\pi : G \to G/H$ a projeção
+    $\pi(g) = gH$. Então $G/H$ tem uma única estrutura diferenciável tal que $\pi$ é $C^\infty$.
+\end{theorem}
+
+\begin{theorem}
+    \label{trm:isotropy_manifolds} (3.62 Warner) Seja $G \times M \to M$ uma ação transitiva do grupo de Lie $G$ na variedade $M$. Seja $m \in M$
+    e $H$ o grupo de isotropia de $m$. O mapa 
+    $$\beta: G/H \to M \quad \beta(gH) = gm_0$$
+    é um difeomorfismo. 
+\end{theorem}
+
+
+\begin{exercise}
+    \label{prob:l3:1}
+\end{exercise}
+\begin{proof}
+    Vou mostrar algo um pouco mais geral, seja $V$ um $R$ espaço vetorial $n$ dimensional, $G_k(V)$ o conjunto 
+    de subespaços $k$ dimensionais de $V$, então 
+    $$G_k(V) \cong \frac{O(n)}{O(k) \times O(n-k)}.$$
+    Em particular, $G_2(R^4)$ = $O(4)/(O(2)\times O(2))$ de onde seguirá que ela é compacta de dimensão $4$.
+    
+    Em $V$, fixe uma base $E_1, \dots E_n$. As matrizes $O(n)$ agem em $V$ por multiplicação e mandam $k$-subespaços
+    vetoriais em $k$-subespaços vetoriais (não vou provar isso). Dessa forma, $O(n)$ age naturalmente em $G_k(V)$.
+    É outro fato da vida (fácil de ver em $R^n$ com Gram-Schmidt) que para $V_0$ e $V_1$ dois $k$-subespaços de $V$
+    existem transformações ortogonais que mandam $V_0$ em $V_1$, portanto a ação $O(n)$ é transitiva. 
+
+    Seja $P = \langle E_1, \dots E_k \rangle$ e $H < O(n)$ o grupo de isotropia de $P$. Se $A \in H$, então como $A$ fixa $P$,
+    $A$ deve mandar os vetores $E_1, \dots, E_k$ em $\langle E_1, \dots E_k \rangle$ e, sendo invertível, os vetores $E_{k+1} \dots E_{n}$
+    em $\langle E_{k+1}, \dots E_n \rangle$. Portanto já determinamos que A deve ser da forma 
+    $$A = \begin{pmatrix}
+        F && 0\\
+        0 && H \\
+    \end{pmatrix}$$
+    onde $F$ é uma matrix $k\times k$ e $H$ é $(n-k)\times(n-k)$. Como $A^tA = I$,
+    segue que 
+    $$I = A^tA = \begin{pmatrix}
+        F^t && 0\\
+        0 && H^t \\
+    \end{pmatrix}
+    \begin{pmatrix}
+        F && 0\\
+        0 && H \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        F^tF && 0\\
+        0 && H^tH\\
+    \end{pmatrix}
+    $$
+    e portanto $F^tF = I$ e $H^tH = I$, ou seja $F \in O(k)$ e $H \in O(n-k)$. Interessantemente, qualquer escolha 
+    de $F$ e $G$ em $O(k) \times O(n-k)$ fixa $P$ (satisfaz as condições), então podemos identificar $H$ justamente como $O(k)\times O(n-k)$.
+    Note que $H$ é um grupo fechado, é a interseção de pré-imagems de fechados por funções contínuas; dado $B \in O(n)$,
+    escrevemos 
+    $$B = \begin{pmatrix}
+        B_{11} && B_{12}\\
+        B_{21} && B_{22}\\
+    \end{pmatrix}$$
+    e $H$ se torna 
+    \begin{align*}
+        H &= \{B \in O(n) : B_{11}^tB_{11} = I\} \cap \{B \in O(n) : B_{12} = \vec{0}\}\\ 
+        & \cap \,\{B \in O(n) : B_{22}^tB_{22} = I\} \cap \{B \in O(n) : B_{21} = \vec{0}\}
+    \end{align*}
+    Portanto, podemos dar uma estrutura diferenciável para $G_k(V)$ correspondente a $O(n)/(O(k)\times O(n-k))$.
+    Segue por [\ref{trm:quotient_manifolds}] que $O(n)/H$ é a imagem 
+    por uma função suave $\pi : O(n) \to O(n)/H$ de $O(n)$, portanto $O(n)/H = G_k(V)$ é imagem de compacto logo compacto.
+    
+    
+    Para calcular a dimensão de $G_2(R^4)$, lembramos que $\dim(O(4)) = 4\cdot3/2 = 6$ e $\dim(O(2)) = 1$, 
+    portanto $\dim(O(4)/(O(2) \times O(2))) = 6 - (1 + 1) = 4$. 
+
+    Sobre ser diffeomorfa com $S^2 \times S^2$, eu não sei provar. Pelo jeito a respota é negativa.
+\end{proof}
+
+\begin{exercise}
+    \label{prob:l3:2}
+\end{exercise}
+\begin{proof}
+    Seguirei a solução do David bonitinha de fazer na mão as cartas da variedade.
+    
+    Antes de mais nada, vamos mostrar que $Q$ é compacto. Como $f$, é contínua, $f^{-1}({0})$ é um fechado de $\C^4 - \vec{0}$, como o mapa do quociente
+    $\pi : \C^4 - \{\vec{0}\} \to \C P^3$ é fechado, segue que $\pi(f^{-1}(\{0\}))$ é um fechado de $\C P^3$, como $\C P^3$ é compacto, segue que $Q$ é compacto.
+
+    Agora vamos dar uma estrutura diferenciável para $Q$ - ele já é N2 pela topologia induzida.
+    Dada uma carta de $\C P^3$, digamos $U_1 = \{x_1 \neq 0\}$ com coordenadas $\varphi_1([1:x_2:x_3:x_4]) = (x_2,x_3,x_4) \in \C^3$,
+    é evidente que $U_1 \cap Q$ são os pontos satisfazendo $g_1([1:x_2:x_3:x_4)] = x_4 - x_2x_3 = 0$. Olhando $h(x_2,x_3,x_4) = g_1\circ\varphi^{-1}$ como uma função 
+    em $\C^3$, ela tem rank constante (basta olhar para $x_4$) e portanto, $M_1 = h^{-1}(\{0\})$ é um embedding em $\C^3$.
+
+    Seja $\psi$ uma carta qualquer de $M_1$, daremos a $Q \cap U_1$ as cartas definidas pela composição de cartas $\psi \circ \varphi_1$, 
+    \[
+    Q \cap U_1 \xrightarrow{\ \varphi_1\ } M_1 \subset \C^3 \xrightarrow{\ \psi\ } W \subset \C^2
+    \]
+    Como $M_1$ é um embedding, $\psi^{-1}(W) = B \cap M_1$, onde $B$ é um aberto de $\C^3$, definimos a carta em $Q$
+    por $(Q \cap \varphi_1^{-1}(B), \psi \circ \varphi_1)$.
+    
+    A construção anterior de cartas para $Q$ pode ser repetida para $U_2 = \{x_2 \neq 0\}, U_3 = \{x_3 \neq 0\}$ e $U_4 = \{x_4 \neq 0\}$.
+    A menos de troca de variáveis (e sinal) as funções $h$ são identicas para cada um desses abertos de $\C P^3$. Completamos nossas 
+    coordenadas de $Q$ com as $\psi \circ \varphi_i$ definidas em cada $Q \cap U_i$.
+
+    Falta mostrar que troca de coordenadas é $C^\infty$, seja $F_{ij} = \psi_j \circ \varphi_j \circ \varphi_i^{-1} \circ \psi_i^{-1}$
+   \[
+        \begin{tikzcd}[column sep=huge, row sep=huge]
+        Q \arrow[r, "\varphi_i"] \arrow[dr, "\varphi_j"'] 
+        & \C^3 \arrow[d, dashed, "\varphi_j \circ \varphi_i^{-1}"]  \supset M_i \arrow[r, "\psi_i"] 
+            & W_i \arrow[d, dashed, "F_{ij}"] \\
+        & \C^3 \supset M_j \arrow[r, "\psi_j"'] & W_j
+        \end{tikzcd}
+    \]
+    Como composição de funções $C^\infty$, (e o fato de $\psi_j$ serem embeddings para a continuidade), segue que $F_{ij}$ é $C^\infty$.
+    E portanto $Q$ é uma variedade diferenciável compacta de dimensão complexa 2 (e dimensão real 4).
+
+    Sobre ser diffeomorfa com $S^2 \times S^2$, acho que o David falou que era, não tenho ideia de como provar.
+
+
+
+\end{proof}
+
+\begin{exercise}
+    \label{prob:l3:3}
+    Essa questão é copiar palavra por palavra a solução do Warner. Não acho que vale a pena escrever. Se fizer, farei por último.
+\end{exercise}
+
+\begin{exercise}
+    \label{prob:l3:4}
+\end{exercise}
+\begin{proof}
+    A primeira coisa a notar é que, como subconjuntos de $GL(2,\R)$ e $GL(3,\R)$, $SL(2,\R)$ não é compacto,
+    pois 
+    $$\begin{pmatrix}
+        1/n & 0 \\
+        0 & n \\
+    \end{pmatrix} \in SL(2,\R)$$
+    para todo $n$, portanto, não é limitado. Já $SO(3,\R)$ é um fechado do compacto $O(3,\R)$ então é compacto. 
+    E já temos que $SL(2,\R)$ não pode ser diffeomorfa a $SO(3,\R)$.
+
+    Seja $F: M \to N$ de rank constante e $S \subset M$ embedding dado por $S = F^{-1}(0)$ - pelo Teorema do Rank Constante.
+    Sabemos que para $p \in S$, $T_p S = \ker(dF_p)$, usaremos isso para calcular $\mathfrak{so}(3,\R)$ e $\mathfrak{sl}(2,\R)$.
+
+    Já que $SO(3,\R)$ é um subgrupo aberto de $O(3,\R)$, $T_ISO(3,\R) = T_IO(3,\R)$. Então, para calcular $\mathfrak{so}(3,\R)$,  $\mathfrak{o}(3,\R)$ 
+    que sabemos ser o kernel da transformação
+    $$A \in GL(3,\R) \xrightarrow{\ \Phi\ } A^tA \in M(3,\R)$$
+    Já calculamos $d\Phi_I$ e vimos que
+    $$d\Phi_I(B) = B + B^t$$
+    portanto, $\mathfrak{so}(3,\R) = \ker(d\Phi_I) = \{B \in M(3,\R): B = - B^t\}$, 
+    ou seja $\mathfrak{so}(3,\R)$ é a algebra de Lie das matrizes $3\times 3$ antissimétricas com o colchete 
+    sendo o comutador (por que é subálgebra de $Lie(GL(3,\R))$).
+
+    Lembrando que $SL(2,\R) = \det^{-1}(\{1\}) \subset GL(2,\R)$ e que $d(\det)_I(B) = \text{tr}(B)$, calculamos, pela mesma observação 
+    anterior que $\mathfrak{sl(2,\R)} = \{B \in M(2,\R): \text{tr}(B) = 0\}$ com o colchete do comutador novamente.
+    
+    Vamos dar bases para as duas álgebras de Lie e mostrar que elas não são isomorfas pela observação do Roger.
+
+    Uma base para $\mathfrak{so}(3,\R)$ pode ser 
+    $$A = \begin{pmatrix}
+        0 & 1 & 0\\
+        -1 & 0 & 0\\
+        0 & 0 & 0\\
+    \end{pmatrix}
+    \quad
+    B = \begin{pmatrix}
+        0 & 0 & -1\\
+        0 & 0 & 0\\
+        1 & 0 & 0\\
+    \end{pmatrix}
+    \quad
+    C = \begin{pmatrix}
+        0 & 0 & 0\\
+        0 & 0 & 1\\
+        0 & -1 & 0\\
+    \end{pmatrix}$$
+    E depois de um cálculo meio chato dos colchetes (lembrando que $C^t = -C$ e $(FG) = (F^tG^t)^t$ nessas matrizes)
+    temos 
+    $$[A,B] = C \quad [B,C] = A \quad [A,C] = -B$$
+    Note que o colchete de dois vetores L.I leva em um terceiro L.I aos dois.
+    
+    Uma base para $\mathfrak{sl}(2,\R)$ é dada por
+    $$E = \begin{pmatrix}
+        1 & 0 \\
+        0 & -1
+    \end{pmatrix}
+    \quad
+    F = \begin{pmatrix}
+        0 & 1 \\
+        0 & 0 
+    \end{pmatrix}
+    \quad
+    G = \begin{pmatrix}
+        0 & 0 \\
+        1 & 0 
+    \end{pmatrix}$$
+    
+    Calculando os colchetes, achamos
+    $$[E,F] = 2F \quad [F,G] = E \quad [E,G] = -2G $$
+    Mas então, o colchete em $\mathfrak{sl(2,\R)}$ leva dois vetores em L.I (digamos $E,F$) em um vetor L.D com os dois $2F$.
+    Portanto $\mathfrak{so}(3,\R) \not \cong \mathfrak{sl}(2,\R).$
+\end{proof}
+    
+\begin{exercise}
+    \label{prob:l3:5}
+\end{exercise}
+\begin{proof}
+    Para calcular $\mathfrak{sl}(2,\C)$ e $\mathfrak{so}(3,\C)$, exatamente as mesmas contas anteriores servem, mas,
+    curiosamente, sobre os complexos, as algebras de Lie são isomorfas. Usando os mesmos vetores que na questão anterior
+    e definindo $T:\mathfrak{so}(3,\C) \to \mathfrak{sl}(2,\C)$ por 
+    \begin{align*}
+        A \quad &\mapsto \quad \frac{i}{2}(F + G)\\
+        B \quad &\mapsto \quad \frac{1}{2}(G - F)\\
+        C \quad &\mapsto \quad \frac{i}{2}(E)
+    \end{align*}
+    Vemos que $T$ manda linearmente uma base em outra, logo é invertível. Falta verificar que é homomorfismo de álgebras de Lie,
+    para isso temos que verificar que preserva o colchete, segue as computações necessárias. 
+    $$[TA, TB] = [(F + G)i/2, (G - F)/2] = ([F,G] + [G,-F])i/4 = [F,G]i/2 = Ei/2 = TC$$
+    $$[TB, TC] = [(G - F)/2, Ei/2] = ([G,E] - [F,E])i/4 = (2G + 2F)i/4 = (G + F)i/2 = TA$$
+    $$[TC, TA] = [Ei/2, (F + G)i/2] = -([E,F] + [E,G])/4 = -(2F - 2G)/4 = (G - F)/2 = TB$$
+    segue que $T$ é homomorfismo. Sobre se $SO(3,\C)$ e $SL(2,\C)$ serem diffeomorfas ou não, não 
+    sei fazer. 
+\end{proof}
+
+\begin{exercise}
+    \label{prob:l3:6}
+\end{exercise}
+\begin{proof}
+    \textbf{(1.a)} É fácil ver que $D$ é suave de dimensão 2, pois podemos escolher 
+    os campos suaves em $SO(3)$ associados a $e_1$ e $e_2$ em $\mathfrak{so}(3)$.
+    Mais precisamente, os campos suaves $d(L_g)e_1$ e $d(L_g)e_2$ definidos em toda variedade por 
+    definição geram $D$ pontualmente, logo $D$ é suave.
+
+    \textbf{(1.b)} Como os campos são associados a translação, vale que 
+    $$d(L_g)([X,Y]) = [d(L_g)X, d(L_g)Y]$$
+    portanto basta checar na identidade. Mas vimos que $[e_1, e_2] = e_3 \not \in \langle e_1, e_2 \rangle$,
+    portanto a distribuição não é involutiva.
+
+    \textbf{(1.c)} Pelo teorema de Frobënius, D é integrável se e somente se for involutiva, como não é 
+    involutiva, não é integrável.
+
+    \textbf{(2)} Como $SO(3,\R) \subset GL(3,\R)$ é subgrupo de Lie, para encontrar uma curva integral de $SO(3,\R)$, basta aplicar a exponenciação
+    em $GL(3,\R)$. A curva integral dada por $X = e_1$ começando no ponto $g$ será $g \cdot \exp(t e_1)$
+    
+    Identificando $\C$ com o grupo de matrizes 
+    $$a + ib = \begin{pmatrix}
+        0 & 0 & 0 \\
+        0 & a & -b\\
+        0 & b & a
+    \end{pmatrix}$$
+    é fácil verificar que $e_1$ é mandado em $i$ e $\exp(e_1t)$ terá exatamente o mesmo papel 
+    que $\exp(it)$. Isso é só uma forma fácil de ver que, expandindo a definição de $\exp(e_1 t)$
+    teremos algo do tipo
+    $$\exp(e_1 t) = \begin{pmatrix}
+        0 & 0 & 0 \\
+        0 & \sin(t) & -\cos(t) \\
+        0 & \cos(t) & \sin(t)
+    \end{pmatrix}$$
+    (que pode ser explicitamente verificado expandindo a conta em cada coordenada e usando as expansões de Taylor).
+    Segue que as curvas integrais são fechadas com período $2\pi$. Já sabemos que ela deveriam ser completas pois $SO(3)$ é compacto
+    e portanto fechadas (por serem imagens de $\R$). Mas verifica-se justamente que as curvas são rotações sobre o primeiro eixo em $SO(3)$. 
+\end{proof}
+
+
