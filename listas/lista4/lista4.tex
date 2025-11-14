@@ -1,0 +1,107 @@
+\clearpage
+\section{Lista 4 (10/11/2025)}
+
+Problemas feitos:
+\begin{enumerate}
+    \item Exercício \ref{prob:l4:1} : \checkmark
+    \item Exercício \ref{prob:l4:2} : \checkmark
+    \item Exercício \ref{prob:l4:3} : \checkmark
+\end{enumerate}
+
+
+\begin{problem}
+    \label{prob:l4:1}
+\end{problem}
+\begin{proof}
+    Para computar o pullback $\Phi^*\omega$, basta fazer a substituição das coordenadas. Portanto,
+    \begin{align*}
+        \Phi^* \omega &= \cos\theta [d(\sin\theta) \wedge d(\cos\phi)] + \sin\theta[d(\cos\phi) \wedge d(\sin\phi)] \\
+                &+ \cos\phi[d(\sin\phi) \wedge d(\cos\theta)] + \sin\phi[d(\cos\theta) \wedge d(\sin\theta)]\\
+    \end{align*} 
+    Note que o segundo e quarto termo dessa expressão anularão, pois serão da forma $Fd\phi \wedge d\phi = 0$ e $Gd\theta \wedge d\theta = 0$.
+    Expandindo o primeiro e terceiro, temos
+    \begin{align*}
+        \Phi^* \omega &= \cos\theta [\cos\theta d(\theta) \wedge -\sin\phi d(\phi)] + \cos\phi[\cos\phi d\phi \wedge (-\sin\theta) d\theta] \\
+                      &= [-(\cos\theta)^2\sin\phi + \sin\theta(\cos\phi)^2] d\theta \wedge d\phi
+    \end{align*}
+    Agora, basta usar a definição para calcular
+    \[
+    \int_{\Phi^{-1}(T^2)} \Phi^*(\omega) = \int_0^{2\pi}\int_0^{2\pi} -(\cos\theta)^2\sin\phi + \sin\theta(\cos\phi)^2 d\theta d\phi
+    \]
+    Lembrando que $\int_0^{2\pi} \cos^2(u) du = \pi$ e $\int_0^{2\pi} \sin(u) du = 0$, temos justamente
+    \[
+    \int_0^{2\pi}\int_0^{2\pi} -(\cos\theta)^2\sin\phi + \sin\theta(\cos\phi)^2 d\theta d\phi = \int_0^{2\pi} -\pi \sin(\phi) d\phi = 0.
+    \]
+\end{proof}
+
+
+\begin{problem}
+    \label{prob:l4:2}
+\end{problem}
+\begin{proof}
+    Definindo $\tilde{\alpha} \in \Omega(R^3)$ sendo 
+    \[
+        \tilde{\alpha} = -ydx + xdy
+    \]
+    temos que a $\alpha = i_{S^2}^*\tilde{\alpha}$. Como $d$ comuta com o pullback, basta calcular
+    \[
+        d\alpha = i_{S^2}^* d \tilde{\alpha} = i_{S^2}^* d(-ydx + xdy) = i_{S^2}^* 2dx \wedge dy
+    \]
+    Fazendo o pullback por $\Phi$, achamos 
+    \begin{align*}
+        \Phi^*d\alpha &= 2 d(\sin\theta \cos\phi) \wedge d(\sin\theta \sin\phi)\\
+        &= 2[ (\cos\theta \cos\phi d\theta - \sin\theta\sin\phi d\phi) \wedge (\cos\theta\sin\phi d\theta + \sin\theta\cos\phi d\phi)]
+    \end{align*}
+    Da expressão acima, sobram somente dois termos
+    \[
+    \Phi^*d\alpha = \cos\theta\sin\theta(\cos\phi)^2 d\theta \wedge d\phi + \sin\theta\cos\theta (\sin\phi)^2 d\theta\wedge d\phi = 
+    \cos\theta\sin\theta d\theta \wedge d\phi.
+    \]
+    
+    Sabemos pelo Teorema de Stokes que $\int_{S^2} d\alpha = 0$ (pois $S^2$ é compacta sem bordo), mas fazendo as contas com o pullback também encontramos
+    \[
+       \int_{S^2} d\alpha = \int_{\Phi^{-1}(S^2)} \Phi^*(d\alpha) = \int_0^{2\pi}\int_0^{\pi} \cos\theta \sin\theta  d\theta d\phi = \int_{0}^{2\pi} 0 d\phi = 0.
+    \]
+    
+\end{proof}
+
+\begin{problem}
+    \label{prob:l4:3}
+\end{problem}
+\begin{proof}
+    Computando $d\alpha$, temos 
+    \[
+        d\alpha = -dy \wedge dx + dx \wedge dy + dz \wedge dz = 2 dx \wedge dy.
+    \]
+
+    Para avaliar as integrais, podemos usar a parametrização $\Phi$ (com $0\leq\theta\leq \pi/2$) dada pelo exercício anterior.
+    Além disso, já calculamos o pullback por $2 dx\wedge dy$ também, então facilita. A segunda integral é portanto
+    \[
+    \int_S d\alpha = \int_{\Phi^{-1}(S)} \Phi^* d\alpha = \int_0^{2\pi}\int_0^{\pi/2} \cos\theta \sin\theta d\theta d\phi
+    \]
+    resolvendo,
+    \[
+     \int_S d\alpha = \int_0^{2\pi} \sin \theta \bigg|_0^{\pi/2}  d\phi = 2\pi.
+    \]
+    Para calcular a integral no bordo, orientamos o círculo por $\varphi(\phi) = (\cos\phi, \sin\phi, 0)$. Então 
+    \begin{align*}
+        \varphi^* \alpha &= -\sin\phi d(\cos\phi) + \cos\phi d(\sin\phi)\\
+        &= \sin^2(\phi) d\phi + \cos^2(\phi) d\phi = d\phi
+    \end{align*}
+    Logo, 
+    \[
+        \int_{\partial S} \alpha = \int_{0}^{2\pi} d\theta = 2\pi.
+    \]
+    e portanto as duas integrais concordam.
+
+    Geométricamente, elas correspondem a duas vezes a área do círculo, pois justamente 
+    \[
+        \int_{\partial S} \alpha = 2\int_{S^1}  -ydx + xdx
+    \]
+    que é a forma de área em $\R^2$, ou seja, pelo Teorema de Stokes (ou Green nesse caso particular), sabemos justamente que 
+    \[
+        2\int_{S^1}  -ydx + xdx = 2 \int_{D} 1 dx \wedge dy = 2\cdot A(D) 
+    \]
+    onde $D$ é o disco de raio $1$ em $\R^2$.
+
+\end{proof}
